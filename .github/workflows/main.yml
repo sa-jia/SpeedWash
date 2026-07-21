@@ -30,9 +30,12 @@ jobs:
           REMOTE=$(git rev-parse upstream/main)
           
           if [ "$LOCAL" != "$REMOTE" ]; then
-            git fetch upstream
-            git merge upstream/main --no-edit  
-            git merge upstream/main --allow-unrelated-histories --no-edit
+            git merge upstream/main --no-edit --allow-unrelated-histories || {
+              git checkout --theirs .
+              git add .
+              git commit --no-edit -m "Merge upstream (resolve conflicts)"
+            }
+            git push origin main
             echo "changed=true" >> $GITHUB_OUTPUT
           else
             echo "changed=false" >> $GITHUB_OUTPUT
