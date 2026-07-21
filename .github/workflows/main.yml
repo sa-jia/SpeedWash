@@ -31,15 +31,17 @@ jobs:
           git remote add upstream https://github.com/mejorhablemos/SpeedWash.git
           git fetch upstream
           
-          LOCAL=$(git rev-parse HEAD)
-          REMOTE=$(git rev-parse upstream/main)
+          BEFORE=$(git rev-parse HEAD)
+
+          git merge upstream/main --no-edit --allow-unrelated-histories || {
+            git checkout --theirs .
+            git add .
+            git commit --no-edit -m "Merge upstream (resolve conflicts)"
+          }
+
+          AFTER=$(git rev-parse HEAD)
           
-          if [ "$LOCAL" != "$REMOTE" ]; then
-            git merge upstream/main --no-edit --allow-unrelated-histories || {
-              git checkout --theirs .
-              git add .
-              git commit --no-edit -m "Merge upstream (resolve conflicts)"
-            }
+          if [ "$BEFORE" != "$AFTER" ]; then
             git push origin main
             echo "changed=true" >> $GITHUB_OUTPUT
           else
