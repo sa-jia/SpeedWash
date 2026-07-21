@@ -57,7 +57,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
+          # cache: 'npm'
 
       - name: Create .env.production
         run: |
@@ -65,7 +65,7 @@ jobs:
           echo "VITE_USER_SCAN_URL=https://lavar.speedwash.com.ar" >> .env.production
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build
         run: npm run build
