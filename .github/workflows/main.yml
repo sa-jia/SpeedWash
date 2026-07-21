@@ -91,7 +91,6 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
             DEPLOY=${{ secrets.DEPLOY_PATH }}
-            DEPLOY="${DEPLOY%/}"
             rm -rf "${DEPLOY}_old"
             mv "$DEPLOY" "${DEPLOY}_old" 2>/dev/null || true
             mv "${DEPLOY}_new" "$DEPLOY"
