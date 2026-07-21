@@ -1,0 +1,510 @@
+{
+  "home": {
+    "title": "首页",
+    "vip": {
+      "title": "VIP卡",
+      "buy": "立即购买"
+    },
+    "invite": {
+      "title": "邀请有礼"
+    },
+    "shop": {
+      "status": {
+        "open": "营业中",
+        "closed": "未营业"
+      }
+    },
+    "orderNotification": {
+      "message": "您有一个洗车订单正在进行中",
+      "view": "查看"
+    },
+    "topUp": {
+      "title": "去充值"
+    }
+  },
+  "mine": {
+    "title": "我的",
+    "wallet": {
+      "title": "我的钱包",
+      "viewAll": "查看全部",
+      "balance": "余额 ($)"
+    },
+    "orders": {
+      "title": "我的订单",
+      "viewAll": "查看全部",
+      "status": {
+        "inProgress": "进行中",
+        "pending": "待付款",
+        "completed": "已完成",
+        "refund": "退款/售后"
+      }
+    },
+    "services": {
+      "title": "我的服务",
+      "vipCard": "我的VIP卡",
+      "identity": "特殊身份认证"
+    }
+  },
+  "login": {
+    "title": "登录",
+    "success": "登录成功",
+    "failed": "登录失败",
+    "guestLoginSuccess": "访客登录成功",
+    "submit": "登录",
+    "register": "注册新用户",
+    "forgotPassword": "忘记登录密码",
+    "guestLogin": "访客登录",
+    "passwordPlaceholder": "请输入密码",
+    "pleaseLogin": "请登录"
+  },
+  "register": {
+    "title": "注册",
+    "codePlaceholder": "请输入验证码",
+    "passwordPlaceholder": "请设置6-20位登录密码",
+    "confirmPasswordPlaceholder": "请再次输入登录密码",
+    "phoneRequired": "请输入手机号",
+    "passwordRequired": "请设置密码",
+    "passwordLength": "密码长度应为6-20位",
+    "confirmPasswordRequired": "请确认密码",
+    "passwordMismatch": "两次输入的密码不一致",
+    "codeSent": "验证码已发送",
+    "sendCodeFailed": "验证码发送失败",
+    "codeCountdown": "{time}s后重新获取",
+    "getCode": "获取验证码",
+    "success": "注册成功",
+    "failed": "注册失败,请重试",
+    "agreementTitle": "用户服务协议",
+    "agreementContent": "这里是用户服务协议内容...",
+    "agreementConfirm": "我已阅读并同意",
+    "agreementPrefix": "勾选同意",
+    "agreementText": "《用户服务协议》",
+    "submit": "立即注册",
+    "hasAccount": "已有账户，",
+    "login": "立即登录",
+    "getCodeFirst": "请先获取验证码",
+    "inviteKeyPlaceholder": "请输入邀请码（选填）"
+  },
+  "order": {
+    "index": {
+      "title": "订单",
+      "tabs": {
+        "1": "全部",
+        "2": "进行中",
+        "3": "待付款",
+        "4": "已完成",
+        "5": "售后退款"
+      },
+      "empty": "暂无订单"
+    },
+    "detail": {
+      "title": "订单详情",
+      "order_time": "下单时间",
+      "order_number": "订单编号",
+      "payment_method": "支付方式",
+      "payment_time": "支付时间",
+      "payment_amount": "支付金额",
+      "order_amount": "订单金额",
+      "order_status": "订单状态",
+      "balance_payment": "余额支付",
+      "contact_service": "联系商家",
+      "wash_status": {
+        "1": "未启动",
+        "2": "洗车中",
+        "3": "洗车完成",
+        "4": "启动超时",
+        "title": "洗车状态"
+      },
+      "status": {
+        "1": "全部",
+        "2": "进行中",
+        "3": "待付款",
+        "4": "已完成",
+        "5": "售后退款",
+        "pending": "待付款",
+        "processing": "处理中",
+        "completed": "已完成",
+        "cancelled": "已取消",
+        "expired": "已超时",
+        "timeout": "已超时"
+      },
+      "store": "所属门店",
+      "device": "设备名称",
+      "washMode": "洗车模式",
+      "refund": "申请退款"
+    },
+    "payment": {
+      "title": "支付",
+      "amount": "支付金额",
+      "countdown_prefix": "剩",
+      "countdown_suffix": "订单自动取消",
+      "methods": {
+        "balance": {
+          "title": "余额支付",
+          "available": "可用余额"
+        },
+        "online": {
+          "title": "在线支付"
+        }
+      },
+      "confirm": "确认支付",
+      "success": "支付成功",
+      "failed": "支付失败",
+      "create": {
+        "failed": "创建订单失败"
+      }
+    },
+    "refund": {
+      "title": "退款",
+      "detail": {
+        "title": "退款详情",
+        "status": "退款状态",
+        "amount": "退款金额",
+        "orderAmount": "订单金额",
+        "voucherUsed": "使用卡券",
+        "reason": "申请原因",
+        "rejectReason": "拒绝原因",
+        "images": "申请图片"
+      },
+      "washMode": "洗车模式",
+      "vipCard": {
+        "title": "使用VIP卡",
+        "notUsed": "未使用"
+      },
+      "actualPay": "实际支付",
+      "description": {
+        "title": "退款说明",
+        "required": "*",
+        "placeholder": "描述退款原因，有助于商家更好的处理售后问题",
+        "validation": "请填写退款原因"
+      },
+      "upload": {
+        "title": "上传凭证",
+        "maxCount": "(最多5张)"
+      },
+      "amount": {
+        "title": "退款金额",
+        "notice": "(退款及抵扣券在完成退款后会原路返回)",
+        "disclaimer": "(实际退款金额及卡券退款情况以商家退款为准)"
+      },
+      "submit": "提交",
+      "success": "申请提交成功",
+      "status": {
+        "1": "申请中",
+        "2": "处理中",
+        "3": "已拒绝",
+        "4": "退款成功",
+        "5": "退款失败",
+        "unknown": "未知状态"
+      }
+    },
+    "status": {
+      "1": "全部",
+      "2": "进行中",
+      "3": "待付款",
+      "4": "已完成",
+      "5": "售后退款"
+    }
+  },
+  "store": {
+    "detail": {
+      "title": "店铺详情",
+      "distance": "距离{distance}",
+      "navigate": "导航",
+      "call": "电话",
+      "topUp": "充值",
+      "buyVip": "购买VIP卡",
+      "wash": "去洗车",
+      "introduction": "店铺介绍",
+      "scanToWash": "扫码洗车",
+      "navigation": "导航",
+      "coverImage": "店铺封面图"
+    },
+    "status": {
+      "0": "未营业",
+      "1": "营业中"
+    }
+  },
+  "washer": {
+    "title": "洗车机",
+    "store": "所属商户",
+    "status": {
+      "0": "空闲",
+      "1": "忙碌",
+      "2": "维护"
+    },
+    "selectPlan": "选择洗车方案",
+    "vipCard": {
+      "title": "VIP 卡",
+      "count": "可用 VIP 卡: {count}张",
+      "empty": "暂无可用 VIP 卡"
+    },
+    "topUp": {
+      "title": "充值",
+      "balance": "当前余额",
+      "scheme": "充值 ${pay}，到账 ${get}",
+      "empty": "暂无充值优惠",
+      "promotion": "充值洗车更优惠",
+      "confirmButton": "确认充值"
+    },
+    "total": "合计",
+    "submit": "去洗车"
+  },
+  "wallet": {
+    "topUp": {
+      "title": "选择充值金额",
+      "receivedAmount": "到账{amount}元",
+      "customAmountLabel": "自定义金额",
+      "customAmountPlaceholder": "请输入充值金额",
+      "confirmButton": "确认充值",
+      "payAmount": "支付 ${amount}",
+      "minAmountTitle": "提示",
+      "minAmountMessage": "最低充值金额为 ${amount}"
+    },
+    "index": {
+      "title": "钱包"
+    },
+    "balance": {
+      "title": "余额明细",
+      "current": "余额 $",
+      "record": "近30天钱包记录",
+      "viewMore": "更多",
+      "datePicker": {
+        "title": "选择年月",
+        "format": "{year}年{month}月"
+      }
+    },
+    "action": {
+      "topUp": "立即充值"
+    }
+  },
+  "scan": {
+    "title": "扫一扫",
+    "result": {
+      "title": "扫描结果"
+    },
+    "type": "结果类型",
+    "validUrl": "有效网址",
+    "unknown": "未知类型",
+    "invalidResult": "无效的扫描结果",
+    "openUrl": "打开链接",
+    "scanAgain": "重新扫描",
+    "scannedContent": "已扫描到以下内容",
+    "securityTip": "以下内容非本应用提供，请谨慎使用。如需使用请点击复制按钮。",
+    "scanFailed": "扫描失败，请重试"
+  },
+  "settings": {
+    "changePassword": {
+      "title": "修改密码",
+      "steps": {
+        "phoneVerify": "手机验证",
+        "setPassword": "设置密码",
+        "complete": "完成"
+      },
+      "form": {
+        "oldPassword": "请输入原密码",
+        "newPassword": "请输入新密码",
+        "confirmPassword": "请确认新密码",
+        "next": "下一步",
+        "confirm": "确认",
+        "getCode": "获取验证码",
+        "codeCountdown": "{time}s后重新获取",
+        "verifyCode": "输入验证码"
+      },
+      "messages": {
+        "codeRequired": "请输入验证码",
+        "codeSent": "验证码已发送",
+        "sendFailed": "验证码发送失败",
+        "changeSuccess": "密码修改成功",
+        "changeFailed": "修改失败，请重试"
+      },
+      "validation": {
+        "oldRequired": "请输入原密码",
+        "passwordRequired": "请输入密码",
+        "newRequired": "请输入新密码",
+        "confirmRequired": "请确认新密码",
+        "passwordLength": "密码长度需在6-20位之间",
+        "passwordMismatch": "两次输入的密码不一致"
+      },
+      "backToHome": {
+        "countdown": "{seconds}秒后自动跳转至首页",
+        "button": "返回首页"
+      }
+    },
+    "index": {
+      "title": "设置"
+    },
+    "nickname": {
+      "title": "修改昵称",
+      "label": "个人昵称",
+      "placeholder": "请输入用户名",
+      "submit": "确认"
+    },
+    "aboutus": {
+      "title": "关于我们"
+    },
+    "items": {
+      "nickname": "个人昵称",
+      "changePassword": "修改密码",
+      "aboutUs": "关于我们"
+    },
+    "logout": {
+      "title": "提示",
+      "message": "确认退出登录？",
+      "button": "退出账号"
+    }
+  },
+  "voucher": {
+    "usable": "可使用",
+    "used": "已使用",
+    "expired": "已过期",
+    "empty": "暂无优惠券",
+    "useNow": "立即使用"
+  },
+  "verify": {
+    "title": "身份认证",
+    "rejected": "未通过",
+    "membership": "身份类型",
+    "memberLicenseNo": "证件号",
+    "uploadCard": "上传证件照片(正面)",
+    "submissionRequirements": "温馨提示",
+    "pleaseUpload": "请上传以下任意一种证件：",
+    "membershipCard": "1. 会员卡",
+    "vocationalLicense": "2. 职业证件",
+    "rideHailingApp": "3. 网约车平台账号",
+    "submit": "提交认证",
+    "agreement": "我同意所提交的信息是最新且准确的",
+    "validation": {
+      "selectType": "请选择身份类型",
+      "enterNo": "请输入证件号",
+      "uploadPhoto": "请上传证件照",
+      "agreeTerms": "请勾选同意"
+    }
+  },
+  "identity": {
+    "title": "身份认证",
+    "addNew": "添加新身份",
+    "status": {
+      "pending": "审核中",
+      "rejected": "已拒绝",
+      "verified": "已认证",
+      "unverified": "未认证"
+    }
+  },
+  "map": {
+    "title": "地图"
+  },
+  "membership": {
+    "title": "购买 VIP 卡",
+    "dialog": {
+      "noPermission": "无购买权限，仅{types}可购买！",
+      "cancel": "取消",
+      "apply": "去申请"
+    },
+    "tips": {
+      "title": "提示",
+      "specialUserOnly": "该卡仅限特殊用户购买"
+    },
+    "buy": "购买",
+    "empty": "暂无可购买的会员卡"
+  },
+  "vouchers": {
+    "title": "我的优惠券"
+  },
+  "payment": {
+    "result": {
+      "title": "支付结果",
+      "orderNo": "订单号: {no}",
+      "countdown": "{seconds}S后跳转",
+      "machineFailure": "设备启动失败",
+      "actions": {
+        "backHome": "返回首页",
+        "viewOrder": "查看订单",
+        "viewWallet": "查看钱包",
+        "viewVoucher": "查看订单"
+      },
+      "success": "支付成功",
+      "failure": "支付失败",
+      "timeout": "支付超时",
+      "cancelled": "支付取消"
+    }
+  },
+  "invite": {
+    "title": "邀请好友",
+    "getFreeWash": "领取免费洗车",
+    "receive": "领取",
+    "rewards": {
+      "title": "邀请奖励",
+      "record": "邀请记录",
+      "inviteNow": "邀请好友",
+      "earnings": {
+        "title": "邀请收益",
+        "totalRewards": {
+          "count": "{count}",
+          "unit": "次",
+          "label": "累计获得"
+        },
+        "successInvites": {
+          "count": "{count}",
+          "unit": "人",
+          "label": "成功邀请"
+        }
+      },
+      "viewRewards": "查看奖励",
+      "linkCopied": "邀请链接已复制",
+      "steps": {
+        "title": "三步赚得免费洗车机会",
+        "step1": "点击\"邀请好友\"按钮分享给好友",
+        "step2": "好友通过你分享的链接获取优惠并免费洗车",
+        "step3": "成功邀请{count}个新人即可获得免费洗车机会"
+      },
+      "activityPeriod": {
+        "title": "活动有效期",
+        "time": "{startTime} - {endTime}"
+      }
+    },
+    "redeem": {
+      "title": "兑换邀请码",
+      "viewCard": "查看卡片",
+      "notNewUser": {
+        "title": "非新用户",
+        "message": "您不是系统新用户\n领取失败！"
+      },
+      "expired": {
+        "title": "活动已失效",
+        "message": "活动已失效"
+      }
+    },
+    "record": {
+      "title": "邀请记录",
+      "columns": {
+        "user": "用户",
+        "progress": "用户进度"
+      },
+      "status": {
+        "unused": "已领取未使用",
+        "used": "已领取已使用"
+      },
+      "empty": "暂无数据"
+    }
+  },
+  "forgotPassword": {
+    "title": "忘记密码"
+  },
+  "auth": {
+    "validation": {
+      "phoneRequired": "请输入手机号",
+      "phoneFormat": "手机号格式不正确",
+      "codeRequired": "请输入验证码",
+      "passwordRequired": "请输入密码",
+      "passwordLength": "密码长度需在6-20位之间",
+      "passwordMismatch": "两次输入的密码不一致",
+      "oldPasswordRequired": "请输入原密码"
+    },
+    "messages": {
+      "codeSent": "验证码已发送",
+      "sendFailed": "验证码发送失败",
+      "codeCountdown": "{time}s后重新获取",
+      "getCode": "获取验证码"
+    }
+  }
+}

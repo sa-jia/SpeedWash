@@ -1,0 +1,16 @@
+{
+  "networkError": "Network error, please try again later",
+  "unknownError": "Unknown error, please try again later", 
+  "serviceError": "Service error, please try again later",
+  "locationError": "Location service error, please check location permissions",
+  "authError": {
+    "tokenExpired": "Login has expired, please log in again",
+    "unauthorized": "Unauthorized access",
+    "forbidden": "Insufficient permissions"
+  },
+  "paymentError": {
+    "insufficientBalance": "Insufficient balance",
+    "paymentFailed": "Payment failed",
+    "orderClosed": "Order has been closed"
+  }
+}

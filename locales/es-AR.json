@@ -1,0 +1,879 @@
+{
+  "routes": {
+    "home": {
+      "title": "Inicio",
+      "hero": {
+        "welcome": "Bienvenido a",
+        "brand": "SpeedWash",
+        "subtitle": "Lavado automático premium.\nRápido, eficiente y con la última tecnología.",
+        "tagline": "Sin turnos. Llegás y listo. En minutos.",
+        "microbanner": "Lavado con Cera · $25.000 · 24/7"
+      },
+      "scanButton": {
+        "title": "Escanear máquina",
+        "subtitle": "Escaneá el QR para iniciar"
+      },
+      "vip": {
+        "title": "Comprá tu pack",
+        "subtitle": "Lavados prepagos con descuento.",
+        "plateTitle": "Tu patente inicia el lavado.",
+        "plateSub": "Sin sacar el celular, sin escanear, llegás y arranca.",
+        "buy": "Ver packs disponibles"
+      },
+      "founder": {
+        "title": "Sos socio fundador",
+        "subtitle": "Sumá más lavados con tu precio preferencial (hasta 31/oct)",
+        "cta": "Ver mis packs fundador"
+      },
+      "myPack": {
+        "title": "Mi pack",
+        "titleMany": "Mis packs",
+        "count": "Te quedan {n} lavados",
+        "countOne": "Te queda 1 lavado",
+        "plateLinkedTitle": "Patente {plate} lista",
+        "platesLinkedTitle": "Patentes vinculadas",
+        "plateLinkedSub": "Llegás y arranca solo. Sin sacar el celu.",
+        "plateEmptyTitle": "Activá el arranque por patente",
+        "plateEmptySub": "Vinculá tu patente y el día que abramos, llegás y arranca solo.",
+        "ctaBindPlate": "Vincular mi patente",
+        "ctaViewPreLaunch": "Ver mi abono",
+        "ctaViewPreLaunchMany": "Ver mis abonos"
+      },
+      "invite": {
+        "title": "Invitá y ganá"
+      },
+      "shop": {
+        "status": {
+          "open": "Abierto",
+          "closed": "Cerrado"
+        }
+      },
+      "orderNotification": {
+        "message": "Tenés un lavado en curso",
+        "view": "Ver"
+      },
+      "topUp": {
+        "title": "Cargar saldo",
+        "subtitle": "Cargá saldo a tu billetera y pagá más rápido",
+        "button": "Cargar ahora"
+      },
+      "stores": {
+        "title": "Sucursales"
+      },
+      "preLaunch": {
+        "title": "Todavía no abrimos",
+        "message": "Estamos por abrir, muy pronto. Los packs que compres quedan guardados y los usás desde el primer día."
+      }
+    },
+    "mine": {
+      "title": "Mi cuenta",
+      "greeting": "Hola, {name}",
+      "defaultUser": "Usuario",
+      "wallet": {
+        "title": "Mi billetera",
+        "viewAll": "Ver todo",
+        "balance": "Saldo ($)"
+      },
+      "orders": {
+        "title": "Mis pedidos",
+        "viewAll": "Ver todo",
+        "status": {
+          "inProgress": "En curso",
+          "pending": "Pendiente",
+          "completed": "Completado",
+          "refund": "Reembolso"
+        }
+      },
+      "services": {
+        "title": "Mis servicios",
+        "vipCard": "Mi abono",
+        "identity": "Verificación de identidad"
+      },
+      "guest": {
+        "name": "Invitado",
+        "title": "Creá tu cuenta SpeedWash",
+        "subtitle": "Necesitás una cuenta para comprar packs, vincular tu patente y ver tus lavados.",
+        "createAccount": "Crear cuenta",
+        "login": "Ya tengo cuenta"
+      }
+    },
+    "login": {
+      "title": "Iniciar sesión",
+      "success": "Sesión iniciada correctamente",
+      "failed": "Error al iniciar sesión",
+      "guestLoginSuccess": "Ingreso como invitado exitoso",
+      "submit": "Ingresar",
+      "register": "Crear cuenta nueva",
+      "forgotPassword": "Olvidé mi contraseña",
+      "guestLogin": "Continuar como invitado",
+      "passwordPlaceholder": "Ingresá tu contraseña",
+      "pleaseLogin": "Iniciá sesión para continuar",
+      "purchaseRequiresAccount": "Para comprar un pack necesitás registrarte. Es gratis y toma 30 segundos."
+    },
+    "register": {
+      "title": "Crear cuenta",
+      "codePlaceholder": "Ingresá el código",
+      "passwordPlaceholder": "Creá una contraseña (mínimo 6 caracteres)",
+      "confirmPasswordPlaceholder": "Confirmá tu contraseña",
+      "phoneRequired": "Ingresá tu número de teléfono",
+      "passwordRequired": "La contraseña es obligatoria",
+      "passwordLength": "La contraseña debe tener entre 6 y 20 caracteres",
+      "confirmPasswordRequired": "Confirmá tu contraseña",
+      "passwordMismatch": "Las contraseñas no coinciden",
+      "codeSent": "Código de verificación enviado",
+      "sendCodeFailed": "Error al enviar el código",
+      "codeCountdown": "Reenviar en {time}s",
+      "getCode": "Obtener código",
+      "success": "Cuenta creada exitosamente",
+      "failed": "Error al registrarse, intentá de nuevo",
+      "agreementTitle": "Términos y condiciones",
+      "agreementContent": "Contenido de los términos y condiciones...",
+      "agreementConfirm": "Leí y acepto los términos",
+      "agreementPrefix": "Acepto los",
+      "agreementText": "Términos y condiciones",
+      "submit": "Crear cuenta",
+      "hasAccount": "¿Ya tenés cuenta? ",
+      "login": "Iniciá sesión",
+      "inviteKeyPlaceholder": "Código de invitación (opcional)",
+      "getCodeFirst": "Primero obtené el código de verificación",
+      "step1Title": "1. Verificá tu teléfono",
+      "step2Title": "2. Completá tus datos",
+      "sendCode": "Enviarme código por SMS",
+      "codeSentTo": "Te enviamos un SMS a {phone}",
+      "inviteToggle": "¿Tenés código de invitación?"
+    },
+    "order": {
+      "index": {
+        "title": "Pedidos",
+        "tabs": {
+          "1": "Todos",
+          "2": "En curso",
+          "3": "Pendientes",
+          "4": "Completados",
+          "5": "Reembolsos"
+        },
+        "empty": "No tenés pedidos todavía"
+      },
+      "detail": {
+        "title": "Detalle del pedido",
+        "order_time": "Fecha del pedido",
+        "order_number": "Número de pedido",
+        "payment_method": "Método de pago",
+        "payment_time": "Fecha de pago",
+        "payment_amount": "Monto pagado",
+        "order_amount": "Monto del pedido",
+        "order_status": "Estado del pedido",
+        "balance_payment": "Pago con saldo",
+        "contact_service": "Contactar al comercio",
+        "covered_by_pack": "Cubierto por pack",
+        "payment_methods": {
+          "unpaid": "No pagado",
+          "balance": "Pago con saldo",
+          "mercadoPago": "Mercado Pago",
+          "pack": "Pack: {cardName}",
+          "packGeneric": "Pack VIP"
+        },
+        "whatsapp_contact": "Contactar por WhatsApp",
+        "whatsapp_message": "Hola, tengo una consulta sobre este pedido:\n\nN°: {orderNo}\nFecha: {date}\nSucursal: {store}\nMáquina: {machine}\nLavado: {mode}\nPago: {payment}\nMonto: {amount}",
+        "washingSteps": {
+          "title": "Mientras la máquina lava",
+          "slow": "Avanzá lentamente al ingresar (así el agua limpia bien por debajo)",
+          "stops": "Avanzá hasta los topes de goma",
+          "engine": "Apagá el motor y esperá"
+        },
+        "wash_status": {
+          "1": "No iniciado",
+          "2": "Lavando",
+          "3": "Finalizado",
+          "4": "Tiempo de inicio agotado",
+          "title": "Estado del lavado"
+        },
+        "status": {
+          "1": "Todos",
+          "2": "En curso",
+          "3": "Pendientes",
+          "4": "Completados",
+          "5": "Reembolsos",
+          "cancelled": "Cancelado",
+          "completed": "Completado",
+          "expired": "Expirado",
+          "pending": "Pendiente de pago",
+          "processing": "Procesando",
+          "timeout": "Tiempo agotado"
+        },
+        "store": "Sucursal",
+        "device": "Equipo",
+        "washMode": "Modo de lavado",
+        "refund": "Solicitar reembolso"
+      },
+      "payment": {
+        "title": "Pagar",
+        "amount": "Monto a pagar",
+        "countdown_prefix": "Se cancela automáticamente en ",
+        "countdown_suffix": "",
+        "methods": {
+          "balance": {
+            "title": "Pagar con saldo",
+            "available": "Saldo disponible"
+          },
+          "online": {
+            "title": "Pago online"
+          }
+        },
+        "confirm": "Confirmar pago",
+        "success": "Pago exitoso",
+        "failed": "Error en el pago",
+        "create": {
+          "failed": "Error al crear el pedido"
+        }
+      },
+      "refund": {
+        "title": "Reembolso",
+        "detail": {
+          "title": "Detalle del reembolso",
+          "status": "Estado del reembolso",
+          "amount": "Monto del reembolso",
+          "orderAmount": "Monto del pedido",
+          "voucherUsed": "Cupón utilizado",
+          "reason": "Motivo de la solicitud",
+          "rejectReason": "Motivo del rechazo",
+          "images": "Imágenes adjuntas"
+        },
+        "washMode": "Modo de lavado",
+        "vipCard": {
+          "title": "Tarjeta VIP utilizada",
+          "notUsed": "No utilizada"
+        },
+        "actualPay": "Pago efectivo",
+        "description": {
+          "title": "Descripción del reembolso",
+          "required": "*",
+          "placeholder": "Describí el motivo del reembolso para que podamos ayudarte mejor",
+          "validation": "Ingresá el motivo del reembolso"
+        },
+        "upload": {
+          "title": "Subir comprobante",
+          "maxCount": "(Máximo 5 imágenes)"
+        },
+        "amount": {
+          "title": "Monto del reembolso",
+          "notice": "(El reembolso y los cupones se devuelven por el medio de pago original)",
+          "disclaimer": "(El monto final del reembolso queda sujeto a aprobación del comercio)"
+        },
+        "submit": "Enviar solicitud",
+        "success": "Solicitud enviada correctamente",
+        "status": {
+          "1": "En revisión",
+          "2": "Procesando",
+          "3": "Rechazado",
+          "4": "Reembolso exitoso",
+          "5": "Reembolso fallido",
+          "unknown": "Estado desconocido"
+        }
+      },
+      "status": {
+        "1": "Todos",
+        "2": "En curso",
+        "3": "Pendiente de pago",
+        "4": "Completado",
+        "5": "Reembolso"
+      }
+    },
+    "store": {
+      "detail": {
+        "title": "Detalle de sucursal",
+        "distance": "a {distance}",
+        "navigate": "Cómo llegar",
+        "call": "Llamar",
+        "topUp": "Cargar saldo",
+        "buyVip": "Comprar Pack",
+        "wash": "Lavar",
+        "introduction": "Descripción de la sucursal",
+        "scanToWash": "Escaneá para lavar",
+        "navigation": "Cómo llegar",
+        "coverImage": "Imagen de la sucursal"
+      },
+      "status": {
+        "0": "Cerrado",
+        "1": "Abierto",
+        "soon": "Próximamente"
+      }
+    },
+    "washer": {
+      "title": "Lavadora",
+      "store": "Sucursal",
+      "status": {
+        "0": "Disponible",
+        "1": "En uso",
+        "2": "En mantenimiento"
+      },
+      "selectPlan": "Elegí tu lavado",
+      "planName": {
+        "premium": "Lavado SpeedWash con Cera"
+      },
+      "vipCard": {
+        "title": "Tarjeta VIP",
+        "count": "{count} tarjetas VIP disponibles",
+        "empty": "No tenés tarjetas VIP disponibles",
+        "usingPack": "Usás tu pack",
+        "usingPackSub": "Lavado sin costo · te quedan {count}",
+        "usePack": "Usar mi pack",
+        "use": "Usar",
+        "available": "Tenés {count} lavados en tu pack",
+        "change": "Cambiar"
+      },
+      "cost": {
+        "freeEyebrow": "Tu pack cubre este lavado",
+        "freeSub": "Te quedan {count} lavados en tu pack",
+        "availableEyebrow": "Tenés un pack disponible",
+        "availableSub": "Podés usar 1 de tus {count} lavados y este sale gratis",
+        "payEyebrow": "Total a pagar"
+      },
+      "prewash": {
+        "title": "Antes de iniciar",
+        "windows": "Cerrá las ventanillas",
+        "wipers": "Desactivá el limpiaparabrisas",
+        "enter": "Al apretar Iniciar, entrá despacio siguiendo las líneas del piso",
+        "center": "Centrá las ruedas sobre la línea azul y avanzá hasta los topes"
+      },
+      "usePackDialog": {
+        "title": "Tenés un pack disponible",
+        "message": "¿Usar un lavado de tu pack en vez de pagar {price}?",
+        "usePack": "Usar mi pack",
+        "payAnyway": "Pagar igual"
+      },
+      "topUp": {
+        "title": "Cargar saldo",
+        "balance": "Saldo actual",
+        "scheme": "Cargá ${pay}, recibí ${get}",
+        "empty": "No hay ofertas de carga disponibles",
+        "promotion": "Cargá saldo y ahorrá más",
+        "confirmButton": "Confirmar carga"
+      },
+      "cashOffer": {
+        "title": "Pagá en efectivo y ahorrá más",
+        "subtitle": "Consultá el precio en efectivo en la sucursal"
+      },
+      "benefits": {
+        "title": "Ventajas de esta máquina",
+        "rodillos": [
+          "Limpieza profunda con rodillos de microfibra",
+          "Ideal para barro y suciedad intensa",
+          "Secado incluido, salís listo para andar",
+          "Lavado rápido y a buen precio"
+        ],
+        "touchless": [
+          "Lavá tu auto sin que te lo toquen",
+          "Alta presión y espuma activa que cuida la pintura",
+          "Mantiene el encerado por más tiempo"
+        ]
+      },
+      "unavailable": {
+        "maintenance": "Esta máquina está en mantenimiento. Probá con otra.",
+        "inUse": "Esta máquina está en uso en este momento."
+      },
+      "total": "Total",
+      "submit": "Iniciar lavado",
+      "submitFree": "Iniciar con mi pack",
+      "submitPay": "Pagar {price} e iniciar",
+      "emergency": {
+        "button": "Emergencia — Llamar ahora",
+        "description": "Si te quedaste encerrado o hay un problema con la máquina, llamá a alguno de estos números.",
+        "cancel": "Cancelar"
+      }
+    },
+    "wallet": {
+      "topUp": {
+        "title": "Elegí el monto a cargar",
+        "receivedAmount": "Recibís {amount}",
+        "customAmountLabel": "Monto personalizado",
+        "customAmountPlaceholder": "Ingresá el monto a cargar",
+        "confirmButton": "Confirmar carga",
+        "payAmount": "Pagás ${amount}",
+        "minAmountTitle": "Aviso",
+        "minAmountMessage": "El monto mínimo de carga es ${amount}"
+      },
+      "index": {
+        "title": "Billetera"
+      },
+      "balance": {
+        "title": "Detalle de saldo",
+        "current": "Saldo $",
+        "record": "Movimientos de los últimos 30 días",
+        "viewMore": "Ver más",
+        "datePicker": {
+          "title": "Seleccionar mes",
+          "format": "{month}/{year}"
+        }
+      },
+      "action": {
+        "topUp": "Cargar saldo"
+      }
+    },
+    "scan": {
+      "title": "Escanear",
+      "result": {
+        "title": "Resultado del escaneo"
+      },
+      "type": "Tipo de resultado",
+      "validUrl": "Enlace válido",
+      "unknown": "Tipo desconocido",
+      "invalidResult": "Resultado de escaneo no válido",
+      "openUrl": "Abrir enlace",
+      "scanAgain": "Escanear de nuevo",
+      "scannedContent": "Contenido escaneado",
+      "securityTip": "El siguiente contenido no es provisto por esta aplicación. Usalo con precaución. Si lo necesitás, copialo con el botón.",
+      "scanFailed": "Error al escanear, intentá de nuevo",
+      "camera": {
+        "initFailed": "No se pudo iniciar la cámara. Revisá los permisos.",
+        "notReady": "La cámara no está lista todavía",
+        "noTrack": "No se encontró la cámara",
+        "torchNotSupported": "Tu dispositivo no tiene linterna",
+        "torchFailed": "No se pudo controlar la linterna",
+        "noQrInImage": "No se reconoció ningún código QR en la imagen",
+        "switch": "Cambiar cámara"
+      }
+    },
+    "settings": {
+      "changePassword": {
+        "title": "Cambiar contraseña",
+        "steps": {
+          "phoneVerify": "Verificar teléfono",
+          "setPassword": "Nueva contraseña",
+          "complete": "Listo"
+        },
+        "form": {
+          "verifyCode": "Ingresá el código",
+          "smsHint": "Te enviamos un SMS al número anterior",
+          "newPassword": "Mínimo 6 caracteres",
+          "newPasswordLabel": "Nueva contraseña",
+          "confirmPassword": "Repetí la contraseña",
+          "confirmPasswordLabel": "Confirmá tu nueva contraseña",
+          "next": "Siguiente",
+          "confirm": "Confirmar",
+          "getCode": "Obtener código",
+          "codeCountdown": "Reenviar en {time}s",
+          "oldPassword": "Ingresá tu contraseña actual"
+        },
+        "messages": {
+          "codeRequired": "Ingresá el código de verificación",
+          "codeSent": "Código de verificación enviado",
+          "sendFailed": "Error al enviar el código",
+          "changeSuccess": "Contraseña cambiada correctamente",
+          "changeFailed": "Error al cambiar la contraseña"
+        },
+        "validation": {
+          "oldRequired": "Ingresá tu contraseña actual",
+          "passwordRequired": "Ingresá la contraseña",
+          "newRequired": "Ingresá la nueva contraseña",
+          "confirmRequired": "Confirmá la nueva contraseña",
+          "passwordLength": "La contraseña debe tener entre 6 y 20 caracteres",
+          "passwordMismatch": "Las contraseñas no coinciden"
+        },
+        "backToHome": {
+          "countdown": "Redirigiendo al inicio en {seconds}s",
+          "button": "Volver al inicio"
+        }
+      },
+      "index": {
+        "title": "Configuración"
+      },
+      "nickname": {
+        "title": "Cambiar nombre",
+        "label": "Nombre de usuario",
+        "placeholder": "Ingresá tu nombre de usuario",
+        "submit": "Confirmar"
+      },
+      "aboutus": {
+        "title": "Sobre nosotros",
+        "pitch": "Speed Wash es el primer lavadero automático digitalizado de la región. Tu auto listo en minutos, sin turnos, las 24 horas. Barrio Calmo, Funes, Santa Fe.",
+        "terms": "Términos y condiciones",
+        "privacy": "Política de privacidad"
+      },
+      "items": {
+        "nickname": "Nombre de usuario",
+        "changePassword": "Cambiar contraseña",
+        "aboutUs": "Sobre nosotros"
+      },
+      "logout": {
+        "title": "Aviso",
+        "message": "¿Querés cerrar sesión?",
+        "button": "Cerrar sesión"
+      }
+    },
+    "voucher": {
+      "usable": "Activos",
+      "used": "Usados",
+      "expired": "Vencidos",
+      "empty": "No tenés abonos activos",
+      "useNow": "Usar ahora",
+      "viewPlans": "Ver planes disponibles",
+      "licensePlate": {
+        "bind": "Vincular patente",
+        "change": "Cambiar patente",
+        "linked": "Patente vinculada",
+        "none": "Sin patente vinculada",
+        "placeholder": "Ej: AB123CD o ABC123",
+        "hint": "Patente argentina: AB123CD (Mercosur) o ABC123 (vieja).",
+        "invalid": "Patente inválida. Usá AB123CD o ABC123.",
+        "cancel": "Cancelar",
+        "confirm": "Guardar",
+        "success": "Patente vinculada",
+        "fail": "Error al vincular la patente"
+      }
+    },
+    "verify": {
+      "title": "Verificación de identidad",
+      "rejected": "Rechazada",
+      "membership": "Tipo de membresía",
+      "memberLicenseNo": "Nro. de documento/licencia",
+      "uploadCard": "Subir credencial (frente)",
+      "submissionRequirements": "Requisitos",
+      "pleaseUpload": "Subí uno de los siguientes documentos:",
+      "membershipCard": "1. Tarjeta de membresía",
+      "vocationalLicense": "2. Licencia profesional",
+      "rideHailingApp": "3. Cuenta de app de transporte",
+      "submit": "Enviar verificación",
+      "agreement": "Confirmo que la información enviada es correcta y está actualizada.",
+      "validation": {
+        "selectType": "Seleccioná el tipo de membresía",
+        "enterNo": "Ingresá el número de documento/licencia",
+        "uploadPhoto": "Subí la foto del documento",
+        "agreeTerms": "Aceptá los términos para continuar"
+      }
+    },
+    "identity": {
+      "title": "Verificación de identidad",
+      "addNew": "Agregar nueva identidad",
+      "status": {
+        "pending": "En revisión",
+        "rejected": "Rechazada",
+        "verified": "Verificada",
+        "unverified": "Sin verificar"
+      }
+    },
+    "map": {
+      "title": "Mapa"
+    },
+    "membership": {
+      "title": "Comprar pack de lavado",
+      "dialog": {
+        "noPermission": "No tenés permiso de compra. Solo {types} pueden comprar.",
+        "cancel": "Cancelar",
+        "apply": "Solicitar ahora"
+      },
+      "tips": {
+        "title": "Aviso",
+        "specialUserOnly": "Esta tarjeta es exclusiva para usuarios especiales"
+      },
+      "buy": "Comprar",
+      "tapToBuy": "Tocá un pack para comprarlo",
+      "empty": "No hay tarjetas VIP disponibles",
+      "founder": {
+        "eyebrow": "Beneficio de socio fundador",
+        "title": "Tu precio preferencial",
+        "subtitle": "Estos packs solo los ves porque sos fundador. Vigente hasta el 31 de octubre de 2026."
+      }
+    },
+    "vouchers": {
+      "title": "Mi abono"
+    },
+    "payment": {
+      "result": {
+        "title": "Resultado del pago",
+        "orderNo": "Pedido Nro.: {no}",
+        "countdown": "Redirigiendo en {seconds}s",
+        "machineFailure": "Error al iniciar el equipo",
+        "actions": {
+          "backHome": "Volver al inicio",
+          "viewOrder": "Ver pedido",
+          "viewWallet": "Ver billetera",
+          "viewVoucher": "Ver cupón"
+        },
+        "success": "Pago exitoso",
+        "failure": "Pago fallido",
+        "timeout": "Tiempo de pago agotado",
+        "cancelled": "Pago cancelado"
+      }
+    },
+    "invite": {
+      "title": "Invitar amigos",
+      "rewards": {
+        "title": "Recompensas por invitación",
+        "record": "Historial de invitaciones",
+        "inviteNow": "Invitar amigos",
+        "earnings": {
+          "title": "Mis ganancias",
+          "totalRewards": {
+            "count": "{count}",
+            "unit": "veces",
+            "label": "Recompensas totales"
+          },
+          "successInvites": {
+            "count": "{count}",
+            "unit": "personas",
+            "label": "Invitaciones exitosas"
+          }
+        },
+        "viewRewards": "Ver recompensas",
+        "linkCopied": "Enlace de invitación copiado",
+        "steps": {
+          "title": "3 pasos para ganar un lavado gratis",
+          "step1": "Tocá \"Invitar amigos\" y compartí el enlace",
+          "step2": "Tus amigos obtienen descuentos y un lavado gratis con tu enlace",
+          "step3": "Invitá a {count} personas nuevas y obtené un lavado gratis"
+        },
+        "activityPeriod": {
+          "title": "Período de la promoción",
+          "time": "{startTime} - {endTime}"
+        }
+      },
+      "redeem": {
+        "title": "Canjear código de invitación",
+        "viewCard": "Ver tarjeta",
+        "notNewUser": {
+          "title": "No sos usuario nuevo",
+          "message": "No sos un usuario nuevo\n¡No se pudo canjear!"
+        },
+        "expired": {
+          "title": "Promoción vencida",
+          "message": "La promoción ya venció"
+        }
+      },
+      "record": {
+        "title": "Historial de invitaciones",
+        "columns": {
+          "user": "Usuario",
+          "progress": "Progreso"
+        },
+        "status": {
+          "unused": "Recibido, sin usar",
+          "used": "Recibido y usado"
+        },
+        "empty": "Sin datos"
+      },
+      "getFreeWash": "Obtener lavado gratis",
+      "receive": "Recibir"
+    },
+    "forgotPassword": {
+      "title": "Recuperar contraseña"
+    },
+    "auth": {
+      "validation": {
+        "phoneRequired": "Ingresá tu número de teléfono",
+        "phoneFormat": "Formato de teléfono no válido",
+        "codeRequired": "Ingresá el código de verificación",
+        "passwordRequired": "Ingresá tu contraseña",
+        "passwordLength": "La contraseña debe tener entre 6 y 20 caracteres",
+        "passwordMismatch": "Las contraseñas no coinciden",
+        "oldPasswordRequired": "Ingresá tu contraseña actual"
+      },
+      "messages": {
+        "codeSent": "Código de verificación enviado",
+        "sendFailed": "Error al enviar el código",
+        "codeCountdown": "Reenviar en {time}s",
+        "getCode": "Obtener código por SMS"
+      }
+    }
+  },
+  "common": {
+    "confirm": "Confirmar",
+    "cancel": "Cancelar",
+    "back": "Volver",
+    "loading": "Cargando...",
+    "success": "Listo",
+    "fail": "Error",
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "gotIt": "Entendido",
+    "upload": {
+      "success": "Subida exitosa",
+      "failed": "Error al subir"
+    },
+    "refreshSuccess": "Actualizado",
+    "loadingMore": "Cargando...",
+    "noMore": "No hay más datos",
+    "loadError": "Error al cargar, tocá para reintentar",
+    "paymentItem": {
+      "top_up": "Carga de saldo",
+      "vipCard": "Compra de tarjeta VIP",
+      "carWash": "Lavado"
+    },
+    "submitSuccess": "Enviado correctamente",
+    "submitFailed": "Error al enviar",
+    "noMoreData": "No hay más datos",
+    "reset": "Restablecer"
+  },
+  "components": {
+    "phoneNumberField": {
+      "placeholder": "Ingresá tu teléfono",
+      "required": "El teléfono es obligatorio",
+      "hintAr": "Solo 10 dígitos. Sin 0 ni 15.",
+      "hintDigits": "Solo {count} dígitos.",
+      "hintDigitsRange": "Entre {min} y {max} dígitos.",
+      "selectAreaCode": "Código de área",
+      "areaCode": {
+        "argentina": "Argentina",
+        "china": "China"
+      },
+      "country": {
+        "argentina": "Argentina",
+        "uruguay": "Uruguay",
+        "chile": "Chile",
+        "brasil": "Brasil",
+        "paraguay": "Paraguay"
+      }
+    },
+    "shopListItem": {
+      "status": {
+        "open": "Abierto",
+        "closed": "Cerrado",
+        "soon": "Próximamente"
+      },
+      "view": "Ver"
+    },
+    "vipCardSelector": {
+      "title": "Elegí tu tarjeta VIP",
+      "subtitle": "Tocá una tarjeta para usarla en este lavado.",
+      "noMore": "No hay más datos",
+      "use": "Usar esta tarjeta",
+      "notUse": "Pagar sin tarjeta"
+    },
+    "couponCard": {
+      "defaultTitle": "Tarjeta VIP",
+      "availableTimes": "{count} usos disponibles",
+      "expiryDate": "Válida hasta"
+    },
+    "payment": {
+      "title": "Pagar",
+      "pay": "Pagar"
+    },
+    "machineItem": {
+      "actions": {
+        "goWash": "Elegir modo de lavado",
+        "choosePrefix": "Elegir Máquina",
+        "chooseGeneric": "Elegir máquina",
+        "moreInfo": "Más información",
+        "wash": "Lavar",
+        "seeInUse": "Ver detalles",
+        "seeMaintenance": "Ver detalles"
+      },
+      "status": {
+        "available": "Disponible",
+        "inUse": "En uso",
+        "maintenance": "Mantenimiento"
+      }
+    },
+    "voucherCard": {
+      "from": {
+        "newUser": "Cupón de bienvenida",
+        "inviteReward": "Recompensa por invitación",
+        "admin": "Bonificación",
+        "purchase": "Comprado"
+      }
+    },
+    "membershipCard": {
+      "maxWashCount": "Lavados incluidos: {count}",
+      "validPeriod": "Vigencia: {days} días",
+      "allUserCanBuy": "Disponible para todos",
+      "specialPrice": "Precio especial: primeras {count} tarjetas, {price} ARS",
+      "specialStock": "Stock promocional: {count}",
+      "perWash": "Te queda a ${price} por lavado",
+      "savings": "Ahorrás {percent}%",
+      "regularPrice": "Precio normal: ${price}"
+    },
+    "invitePageStatus": {
+      "notExist": "Promoción no disponible",
+      "notStarted": "La promoción aún no comenzó",
+      "expired": "La promoción finalizó",
+      "notNewUser": "Solo para usuarios nuevos",
+      "registered": "Ya fuiste invitado por otro usuario",
+      "notQualified": "No cumplís los requisitos para esta promoción",
+      "noReward": {
+        "inviter": "Alcanzaste el límite de recompensas",
+        "invitee": "La recompensa ya fue reclamada"
+      },
+      "notCompleted": "Tareas requeridas no completadas",
+      "forbidden": "Tu cuenta tiene restringida esta promoción"
+    },
+    "googleMap": {
+      "errors": {
+        "addMarkersFailed": "Error al agregar marcadores",
+        "addMarkersError": "Error al agregar marcadores:",
+        "locationFailed": "No se pudo obtener tu ubicación",
+        "browserNotSupported": "Tu navegador no soporta geolocalización"
+      },
+      "infoWindow": {
+        "content": "<div class=\"p-2\"><h3 class=\"font-bold\">{title}</h3>{address ? `<p class=\"text-sm mt-1\">${address}</p>` : ''}</div>"
+      }
+    },
+    "orderItem": {
+      "actions": {
+        "contact": "WhatsApp",
+        "refund": "Solicitar reembolso",
+        "pay": "Pagar ahora"
+      },
+      "status": {
+        "1": "Pendiente de pago",
+        "2": "Pago vencido",
+        "3": "Tiempo de inicio agotado",
+        "4": "Lavando",
+        "5": "Completado"
+      }
+    },
+    "balance": {
+      "title": "Saldo",
+      "changeType": {
+        "adminModify": "Ajuste administrativo",
+        "topUp": "Carga de saldo",
+        "carWashConsumption": "Pago de lavado",
+        "carWashRefund": "Reembolso de lavado"
+      }
+    }
+  },
+  "errors": {
+    "networkError": "Error de conexión, intentá más tarde",
+    "unknownError": "Error desconocido, intentá más tarde",
+    "serviceError": "Error del servicio, intentá más tarde",
+    "locationError": "Error de ubicación, verificá los permisos de localización",
+    "backend": {
+      "phoneAlreadyExists": "Este número ya tiene una cuenta. Iniciá sesión.",
+      "phoneNotRegistered": "Este número no está registrado. ¿Querés crear una cuenta?",
+      "passwordMismatch": "Las contraseñas no coinciden.",
+      "sessionExpired": "Tu sesión expiró. Iniciá sesión de nuevo.",
+      "smsCodeInvalid": "El código de verificación no es válido.",
+      "smsSendFail": "No pudimos enviarte el SMS. Revisá que el número sea correcto o probá de nuevo en unos minutos.",
+      "passwordIncorrect": "Contraseña incorrecta. Probá de nuevo.",
+      "insufficientBalance": "No tenés saldo suficiente para esta operación.",
+      "forbidden": "No tenés permisos para realizar esta acción.",
+      "notFound": "No encontramos lo que buscabas.",
+      "unknown": "Algo no salió bien. Probá de nuevo en unos segundos."
+    }
+  },
+  "validations": {},
+  "notifications": {},
+  "auth": {},
+  "tabbar": {
+    "home": "Inicio",
+    "scan": "Escanear",
+    "mine": "Mi cuenta"
+  },
+  "payment": {
+    "result": {
+      "success": "Pago exitoso",
+      "failure": "Pago fallido",
+      "timeout": "Tiempo de pago agotado",
+      "cancelled": "Pago cancelado"
+    }
+  },
+  "distance": {
+    "calculating": "Calculando...",
+    "meters": "{value} m",
+    "kilometers": "{value} km"
+  },
+  "washMode": {
+    "1": "Lavado estándar",
+    "2": "Lavado SpeedWash con Cera",
+    "3": "Lavado SpeedWash con Cera"
+  }
+}

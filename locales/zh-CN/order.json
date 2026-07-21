@@ -1,0 +1,10 @@
+{
+  "payment": {
+    "result": {
+      "success": "支付成功",
+      "failure": "支付失败",
+      "timeout": "支付超时",
+      "cancelled": "支付取消"
+    }
+  }
+}

@@ -1,0 +1,510 @@
+{
+  "home": {
+    "title": "Home",
+    "vip": {
+      "title": "VIP Card",
+      "buy": "Buy Now"
+    },
+    "invite": {
+      "title": "Invite Rewards"
+    },
+    "shop": {
+      "status": {
+        "open": "Open",
+        "closed": "Closed"
+      }
+    },
+    "orderNotification": {
+      "message": "You have an ongoing car wash order",
+      "view": "View"
+    },
+    "topUp": {
+      "title": "Go to top-up"
+    }
+  },
+  "mine": {
+    "title": "Me",
+    "wallet": {
+      "title": "My Wallet",
+      "viewAll": "View All",
+      "balance": "Balance ($)"
+    },
+    "orders": {
+      "title": "My Orders",
+      "viewAll": "View All",
+      "status": {
+        "inProgress": "In Progress",
+        "pending": "Pending",
+        "completed": "Completed",
+        "refund": "Refund/After-sale"
+      }
+    },
+    "services": {
+      "title": "My Services",
+      "vipCard": "My VIP Card",
+      "identity": "Identity Verification"
+    }
+  },
+  "login": {
+    "title": "Login",
+    "success": "Login successful",
+    "failed": "Login failed",
+    "guestLoginSuccess": "Guest login successful",
+    "submit": "Login",
+    "register": "Register New Account",
+    "forgotPassword": "Forgot Password",
+    "guestLogin": "Guest Login",
+    "passwordPlaceholder": "Enter password",
+    "pleaseLogin": "Please Login"
+  },
+  "register": {
+    "title": "Register",
+    "codePlaceholder": "Enter verification code",
+    "passwordPlaceholder": "Set 6-20 characters password",
+    "confirmPasswordPlaceholder": "Confirm password",
+    "phoneRequired": "Please enter phone number",
+    "passwordRequired": "Password is required",
+    "passwordLength": "Password must be 6-20 characters",
+    "confirmPasswordRequired": "Please confirm password",
+    "passwordMismatch": "Passwords do not match",
+    "codeSent": "Verification code sent",
+    "sendCodeFailed": "Failed to send code",
+    "codeCountdown": "Resend in {time}s",
+    "getCode": "Get Code",
+    "success": "Registration successful",
+    "failed": "Registration failed, please try again",
+    "agreementTitle": "User Agreement",
+    "agreementContent": "This is the user agreement content...",
+    "agreementConfirm": "I have read and agree",
+    "agreementPrefix": "I agree to the",
+    "agreementText": "User Agreement",
+    "submit": "Register",
+    "hasAccount": "Already have an account? ",
+    "login": "Login now",
+    "inviteKeyPlaceholder": "Enter invite code (optional)",
+    "getCodeFirst": "Please get the verification code first"
+  },
+  "order": {
+    "index": {
+      "title": "Orders",
+      "tabs": {
+        "1": "All",
+        "2": "Processing",
+        "3": "Pending",
+        "4": "Completed",
+        "5": "Refund"
+      },
+      "empty": "No orders yet"
+    },
+    "detail": {
+      "title": "Order Detail",
+      "order_time": "Order Time",
+      "order_number": "Order Number",
+      "payment_method": "Payment Method",
+      "payment_time": "Payment Time",
+      "payment_amount": "Payment Amount",
+      "order_amount": "Order Amount",
+      "order_status": "Order Status",
+      "balance_payment": "Balance Payment",
+      "contact_service": "Contact the merchant",
+      "wash_status": {
+        "1": "Not Started",
+        "2": "Washing",
+        "3": "Completed",
+        "4": "Start Timeout",
+        "title": "Wash Status"
+      },
+      "status": {
+        "1": "All",
+        "2": "Processing",
+        "3": "Pending",
+        "4": "Completed",
+        "5": "Refund",
+        "cancelled": "Canceled",
+        "completed": "Completed",
+        "expired": "Timed out",
+        "pending": "Pending payment",
+        "processing": "Processing",
+        "timeout": "Timed out"
+      },
+      "store": "Store",
+      "device": "Device Name",
+      "washMode": "Wash Mode",
+      "refund": "Apply Refund"
+    },
+    "payment": {
+      "title": "Payment",
+      "amount": "Payment Amount",
+      "countdown_prefix": "Closing automatically in ",
+      "countdown_suffix": "",
+      "methods": {
+        "balance": {
+          "title": "Balance Payment",
+          "available": "Available Balance"
+        },
+        "online": {
+          "title": "Online Payment"
+        }
+      },
+      "confirm": "Confirm Payment",
+      "success": "Payment Successful",
+      "failed": "Payment Failed",
+      "create": {
+        "failed": "Failed to create order"
+      }
+    },
+    "refund": {
+      "title": "Refund",
+      "detail": {
+        "title": "Refund Details",
+        "status": "Refund Status",
+        "amount": "Refund Amount",
+        "orderAmount": "Order Amount",
+        "voucherUsed": "Voucher Used",
+        "reason": "Application Reason",
+        "rejectReason": "Reject Reason",
+        "images": "Application Images"
+      },
+      "washMode": "Wash Mode",
+      "vipCard": {
+        "title": "VIP Card Used",
+        "notUsed": "Not Used"
+      },
+      "actualPay": "Actual Payment",
+      "description": {
+        "title": "Refund Description",
+        "required": "*",
+        "placeholder": "Describe the reason for refund to help merchants better handle after-sales issues",
+        "validation": "Please enter refund reason"
+      },
+      "upload": {
+        "title": "Upload Proof",
+        "maxCount": "(Max 5 images)"
+      },
+      "amount": {
+        "title": "Refund Amount",
+        "notice": "(Refund and vouchers will be returned through original payment method)",
+        "disclaimer": "(Actual refund amount and voucher refund subject to merchant approval)"
+      },
+      "submit": "Submit",
+      "success": "Application submitted successfully",
+      "status": {
+        "1": "Processing",
+        "2": "In Progress",
+        "3": "Rejected",
+        "4": "Refund Success",
+        "5": "Refund Failed",
+        "unknown": "Unknown Status"
+      }
+    },
+    "status": {
+      "1": "all",
+      "2": "in progress",
+      "3": "Pending payment",
+      "4": "Completed",
+      "5": "After-sale refund"
+    }
+  },
+  "store": {
+    "detail": {
+      "title": "Store Details",
+      "distance": "{distance} away",
+      "navigate": "Navigate",
+      "call": "Call",
+      "topUp": "Top Up",
+      "buyVip": "Buy VIP",
+      "wash": "Wash",
+      "introduction": "Store Introduction",
+      "scanToWash": "Scan to Wash",
+      "navigation": "Navigate",
+      "coverImage": "Store Cover Image"
+    },
+    "status": {
+      "0": "Closed",
+      "1": "Open"
+    }
+  },
+  "washer": {
+    "title": "Car Washer",
+    "store": "Store",
+    "status": {
+      "0": "Available",
+      "1": "Busy",
+      "2": "Maintenance"
+    },
+    "selectPlan": "Select Wash Plan",
+    "vipCard": {
+      "title": "VIP Card",
+      "count": "{count} VIP Cards Available",
+      "empty": "No VIP Card Available"
+    },
+    "topUp": {
+      "title": "Top-up",
+      "balance": "Current Balance",
+      "scheme": "Pay ${pay}, Receive ${get}",
+      "empty": "No top-up offers available",
+      "promotion": "Better deals with top-up",
+      "confirmButton": "Confirm Top-up"
+    },
+    "total": "Total",
+    "submit": "Wash Now"
+  },
+  "wallet": {
+    "topUp": {
+      "title": "Select Top-up Amount",
+      "receivedAmount": "Receive {amount}",
+      "customAmountLabel": "Custom Amount",
+      "customAmountPlaceholder": "Enter top-up amount",
+      "confirmButton": "Confirm Top-up",
+      "payAmount": "Pay ${amount}",
+      "minAmountTitle": "Notice",
+      "minAmountMessage": "Minimum top-up amount is ${amount}"
+    },
+    "index": {
+      "title": "Wallet"
+    },
+    "balance": {
+      "title": "Balance Details",
+      "current": "Balance $",
+      "record": "Last 30 Days Records",
+      "viewMore": "More",
+      "datePicker": {
+        "title": "Select Month",
+        "format": "{year} {month}"
+      }
+    },
+    "action": {
+      "topUp": "Top Up Now"
+    }
+  },
+  "scan": {
+    "title": "Scan",
+    "result": {
+      "title": "Scan Result"
+    },
+    "type": "Result Type",
+    "validUrl": "Valid URL",
+    "unknown": "Unknown Type",
+    "invalidResult": "Invalid scan result",
+    "openUrl": "Open Link",
+    "scanAgain": "Scan Again",
+    "scannedContent": "Scanned Content",
+    "securityTip": "The following content is not provided by this application. Please use with caution. Click copy button if needed.",
+    "scanFailed": "Scan failed, please try again"
+  },
+  "settings": {
+    "changePassword": {
+      "title": "Change Password",
+      "steps": {
+        "phoneVerify": "Phone Verification",
+        "setPassword": "Set Password",
+        "complete": "Complete"
+      },
+      "form": {
+        "verifyCode": "Enter verification code",
+        "newPassword": "Enter new password",
+        "confirmPassword": "Confirm new password",
+        "next": "Next",
+        "confirm": "Confirm",
+        "getCode": "Get Code",
+        "codeCountdown": "Resend in {time}s",
+        "oldPassword": "Please enter the original password"
+      },
+      "messages": {
+        "codeRequired": "Please enter verification code",
+        "codeSent": "Verification code sent",
+        "sendFailed": "Failed to send code",
+        "changeSuccess": "Password changed successfully",
+        "changeFailed": "Failed to change password"
+      },
+      "validation": {
+        "oldRequired": "Please enter current password",
+        "passwordRequired": "Please enter password",
+        "newRequired": "Please enter new password",
+        "confirmRequired": "Please confirm new password",
+        "passwordLength": "Password must be 6-20 characters",
+        "passwordMismatch": "Passwords do not match"
+      },
+      "backToHome": {
+        "countdown": "Auto redirect to home in {seconds}s",
+        "button": "Back to Home"
+      }
+    },
+    "index": {
+      "title": "Settings"
+    },
+    "nickname": {
+      "title": "Change Nickname",
+      "label": "Nickname",
+      "placeholder": "Enter username",
+      "submit": "Confirm"
+    },
+    "aboutus": {
+      "title": "About Us"
+    },
+    "items": {
+      "nickname": "Nickname",
+      "changePassword": "Change Password",
+      "aboutUs": "About Us"
+    },
+    "logout": {
+      "title": "Notice",
+      "message": "Confirm to log out?",
+      "button": "Log Out"
+    }
+  },
+  "voucher": {
+    "usable": "Available",
+    "used": "Used",
+    "expired": "Expired",
+    "empty": "No vouchers",
+    "useNow": "Use Now"
+  },
+  "verify": {
+    "title": "Identity Verification",
+    "rejected": "Rejected",
+    "membership": "Membership",
+    "memberLicenseNo": "Member/License No.",
+    "uploadCard": "Upload Membership Card(Front)",
+    "submissionRequirements": "Submission Requirements",
+    "pleaseUpload": "Please upload one of the following:",
+    "membershipCard": "1. Membership Card",
+    "vocationalLicense": "2. Vocational License",
+    "rideHailingApp": "3. Ride Hailing App Account",
+    "submit": "Submit",
+    "agreement": "I agree that the information that I'm submitting is the latest and accurate.",
+    "validation": {
+      "selectType": "Please select membership type",
+      "enterNo": "Please enter member/license number",
+      "uploadPhoto": "Please upload photo",
+      "agreeTerms": "Please agree to the terms"
+    }
+  },
+  "identity": {
+    "title": "Identity Verification",
+    "addNew": "Add New Identity",
+    "status": {
+      "pending": "Pending",
+      "rejected": "Rejected",
+      "verified": "Verified",
+      "unverified": "Unverified"
+    }
+  },
+  "map": {
+    "title": "Map"
+  },
+  "membership": {
+    "title": "Buy VIP Card",
+    "dialog": {
+      "noPermission": "No purchase permission, only {types} can buy!",
+      "cancel": "Cancel",
+      "apply": "Apply Now"
+    },
+    "tips": {
+      "title": "Notice",
+      "specialUserOnly": "Only special users can purchase this card"
+    },
+    "buy": "Buy",
+    "empty": "No VIP cards available"
+  },
+  "vouchers": {
+    "title": "My Vouchers"
+  },
+  "payment": {
+    "result": {
+      "title": "Payment Result",
+      "orderNo": "Order No.: {no}",
+      "countdown": "Redirect in {seconds}s",
+      "machineFailure": "Device Start Failed",
+      "actions": {
+        "backHome": "Back to Home",
+        "viewOrder": "View Order",
+        "viewWallet": "View Wallet",
+        "viewVoucher": "View Voucher"
+      },
+      "success": "Payment Successful",
+      "failure": "Payment Failed",
+      "timeout": "Payment Timeout",
+      "cancelled": "Payment Cancelled"
+    }
+  },
+  "invite": {
+    "title": "Invite Friends",
+    "rewards": {
+      "title": "Invite Rewards",
+      "record": "Invite Records",
+      "inviteNow": "Invite Friends",
+      "earnings": {
+        "title": "Invite Earnings",
+        "totalRewards": {
+          "count": "{count}",
+          "unit": "times",
+          "label": "Total Rewards"
+        },
+        "successInvites": {
+          "count": "{count}",
+          "unit": "people",
+          "label": "Successful Invites"
+        }
+      },
+      "viewRewards": "View Rewards",
+      "linkCopied": "Invite link copied",
+      "steps": {
+        "title": "3 Steps to Earn Free Car Wash",
+        "step1": "Click 'Invite Friends' button to share",
+        "step2": "Friends get discounts and free car wash through your link",
+        "step3": "Get free car wash after inviting {count} new users"
+      },
+      "activityPeriod": {
+        "title": "Activity Period",
+        "time": "{startTime} - {endTime}"
+      }
+    },
+    "redeem": {
+      "title": "Redeem Invite Code",
+      "viewCard": "View Card",
+      "notNewUser": {
+        "title": "Not a New User",
+        "message": "You are not a new user\nRedemption failed!"
+      },
+      "expired": {
+        "title": "Activity Expired",
+        "message": "Activity has expired"
+      }
+    },
+    "record": {
+      "title": "Invite Records",
+      "columns": {
+        "user": "User",
+        "progress": "Progress"
+      },
+      "status": {
+        "unused": "Received but unused",
+        "used": "Received and used"
+      },
+      "empty": "No data"
+    },
+    "getFreeWash": "Get Free Car Wash",
+    "receive": "Receive"
+  },
+  "forgotPassword": {
+    "title": "Forgot Password"
+  },
+  "auth": {
+    "validation": {
+      "phoneRequired": "Please enter phone number",
+      "phoneFormat": "Invalid phone number format",
+      "codeRequired": "Please enter verification code",
+      "passwordRequired": "Please enter password",
+      "passwordLength": "Password must be 6-20 characters",
+      "passwordMismatch": "Passwords do not match",
+      "oldPasswordRequired": "Please enter current password"
+    },
+    "messages": {
+      "codeSent": "Verification code sent",
+      "sendFailed": "Failed to send code",
+      "codeCountdown": "Resend in {time}s",
+      "getCode": "Get Code"
+    }
+  }
+}

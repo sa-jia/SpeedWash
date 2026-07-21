@@ -1,0 +1,37 @@
+{
+  "orderStatus": {
+    "pending": "Your order is pending",
+    "processing": "Your order is being processed",
+    "completed": "Your order is completed",
+    "refund": "Refund request received"
+  },
+  "payment": {
+    "success": "Payment successful",
+    "failed": "Payment failed",
+    "timeout": "Payment timed out"
+  },
+  "system": {
+    "maintenance": "System is under maintenance",
+    "update": "A new version is available"
+  },
+  "invite": {
+    "newReward": "You have a new invite reward",
+    "friendJoined": "A friend has joined using your invite link"
+  },
+  "wallet": {
+    "topUp": "Wallet top-up successful",
+    "withdrawal": "Withdrawal processed"
+  },
+  "vip": {
+    "cardExpired": "Your VIP card is about to expire",
+    "cardActivated": "VIP card activated successfully"
+  },
+  "wash": {
+    "completed": "Car wash completed",
+    "started": "Car wash started"
+  },
+  "promotion": {
+    "newOffer": "New special offer available",
+    "limitedTimeDiscount": "Limited time discount!"
+  }
+}

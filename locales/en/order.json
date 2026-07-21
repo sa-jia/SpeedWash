@@ -1,0 +1,10 @@
+{
+    "payment": {
+      "result": {
+        "success": "Payment Successful",
+        "failure": "Payment Failed",
+        "timeout": "Payment Timeout",
+        "cancelled": "Payment Cancelled"
+      }
+    }
+}

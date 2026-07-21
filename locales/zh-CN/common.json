@@ -1,0 +1,26 @@
+{
+  "confirm": "确认",
+  "cancel": "取消",
+  "back": "返回",
+  "loading": "加载中...",
+  "success": "成功",
+  "fail": "失败",
+  "copy": "复制",
+  "copied": "已复制",
+  "gotIt": "知道了",
+  "upload": {
+    "success": "上传成功",
+    "failed": "上传失败"
+  },
+  "refreshSuccess": "刷新成功",
+  "loadingMore": "加载中...",
+  "noMore": "没有更多了",
+  "loadError": "请求失败，点击重试",
+  "paymentItem": {
+    "top_up": "充值",
+    "vipCard": "购买 VIP 卡",
+    "carWash": "洗车"
+  },
+  "submitSuccess": "提交成功",
+  "submitFailed": "提交失败"
+}

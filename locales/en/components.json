@@ -1,0 +1,84 @@
+{
+  "phoneNumberField": {
+    "placeholder": "Enter phone number",
+    "required": "Phone number is required",
+    "selectAreaCode": "Select area code",
+    "areaCode": {
+      "argentina": "Argentina",
+      "china": "China"
+    }
+  },
+  "shopListItem": {
+    "status": {
+      "open": "Open",
+      "closed": "Closed"
+    },
+    "view": "View"
+  },
+  "vipCardSelector": {
+    "title": "Select VIP Card",
+    "noMore": "No more data",
+    "notUse": "Not Use"
+  },
+  "couponCard": {
+    "defaultTitle": "VIP Card",
+    "availableTimes": "{count} Available",
+    "expiryDate": "Expires on"
+  },
+  "payment": {
+    "title": "Payment",
+    "pay": "Pay"
+  },
+  "machineItem": {
+    "actions": {
+      "goWash": "Go Wash"
+    }
+  },
+  "voucherCard": {
+    "from": {
+      "newUser": "New User Voucher",
+      "inviteReward": "Invite Reward",
+      "admin": "Admin Gift",
+      "purchase": "Purchased"
+    }
+  },
+  "membershipCard": {
+    "maxWashCount": "Max Wash Times: {count}",
+    "validPeriod": "Valid Period: {days} days",
+    "allUserCanBuy": "Available to All Users",
+    "specialPrice": "Special Price: First {count} cards, {price}ARS",
+    "specialStock": "Special Stock: {count}"
+  },
+  "invitePageStatus": {
+    "notExist": "Activity not available",
+    "notStarted": "Activity has not started yet",
+    "expired": "Activity has ended",
+    "notNewUser": "Only new users can participate in this activity",
+    "registered": "You have already been invited by others",
+    "notQualified": "You are not eligible for this activity",
+    "noReward": {
+      "inviter": "You have reached the maximum reward limit",
+      "invitee": "The reward has been claimed"
+    },
+    "notCompleted": "Required tasks not completed",
+    "forbidden": "Your account is restricted from this activity"
+  },
+  "googleMap": {
+    "errors": {
+      "addMarkersFailed": "Failed to add markers",
+      "addMarkersError": "Error adding markers:",
+      "locationFailed": "Unable to get your location",
+      "browserNotSupported": "Your browser does not support geolocation"
+    },
+    "infoWindow": {
+      "content": "<div class=\"p-2\"><h3 class=\"font-bold\">{title}</h3>{address ? `<p class=\"text-sm mt-1\">${address}</p>` : ''}</div>"
+    }
+  },
+  "orderItem": {
+    "actions": {
+      "contact": "Contact Merchant",
+      "refund": "Apply Refund",
+      "pay": "Pay Now"
+    }
+  }
+}

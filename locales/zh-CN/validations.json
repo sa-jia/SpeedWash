@@ -1,0 +1,27 @@
+{
+  "phone": {
+    "required": "手机号不能为空",
+    "invalid": "手机号格式不正确"
+  },
+  "password": {
+    "required": "密码不能为空",
+    "length": "密码长度必须为6-20位",
+    "mismatch": "两次输入的密码不一致"
+  },
+  "verificationCode": {
+    "required": "验证码不能为空",
+    "invalid": "验证码无效"
+  },
+  "email": {
+    "required": "邮箱不能为空",
+    "invalid": "邮箱格式不正确"
+  },
+  "idCard": {
+    "required": "身份证号不能为空",
+    "invalid": "身份证号格式不正确"
+  },
+  "realName": {
+    "required": "真实姓名不能为空",
+    "invalid": "真实姓名格式不正确"
+  }
+}

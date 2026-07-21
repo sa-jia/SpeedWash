@@ -1,0 +1,37 @@
+{
+  "orderStatus": {
+    "pending": "您的订单正在等待处理",
+    "processing": "您的订单正在处理中",
+    "completed": "您的订单已完成",
+    "refund": "退款申请已收到"
+  },
+  "payment": {
+    "success": "支付成功",
+    "failed": "支付失败",
+    "timeout": "支付超时"
+  },
+  "system": {
+    "maintenance": "系统正在维护中",
+    "update": "有新版本可用"
+  },
+  "invite": {
+    "newReward": "您有新的邀请奖励",
+    "friendJoined": "有好友通过您的邀请链接加入"
+  },
+  "wallet": {
+    "topUp": "钱包充值成功",
+    "withdrawal": "提现已处理"
+  },
+  "vip": {
+    "cardExpired": "您的VIP卡即将到期",
+    "cardActivated": "VIP卡激活成功"
+  },
+  "wash": {
+    "completed": "洗车已完成",
+    "started": "洗车已开始"
+  },
+  "promotion": {
+    "newOffer": "新的特惠活动可用",
+    "limitedTimeDiscount": "限时优惠！"
+  }
+}

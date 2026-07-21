@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover"
+    />
+    <!-- <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> -->
+    <title>SpeedWash</title>
+    <!-- Meta Pixel -->
+    <script>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '3272202676285159');
+      fbq('track', 'PageView');
+    </script>
+    <!-- End Meta Pixel -->
+    <!-- <script src="https://js.stripe.com/v3" async></script> -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.stripe.com https://*.stripe.network;
+      frame-src 'self' https://*.stripe.com https://*.stripe.network https://hooks.stripe.com;
+      connect-src 'self' https://*.stripe.com https://*.stripe.network;
+      img-src 'self' data: https://*.stripe.com https://*.stripe.network;
+      style-src 'self' 'unsafe-inline';
+      font-src 'self' data:;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      media-src 'self';
+      manifest-src 'self';
+      worker-src 'self' blob:;
+    "> -->
+  </head>
+  <body>
+    <!-- Meta Pixel (noscript) -->
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=3272202676285159&ev=PageView&noscript=1"/></noscript>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+  </body>
+</html>

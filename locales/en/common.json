@@ -1,0 +1,26 @@
+{
+  "confirm": "Confirm",
+  "cancel": "Cancel",
+  "back": "Back",
+  "loading": "Loading...",
+  "success": "Success",
+  "fail": "Failed",
+  "copy": "Copy",
+  "copied": "Copied",
+  "gotIt": "Got it",
+  "upload": {
+    "success": "Upload successful",
+    "failed": "Upload failed"
+  },
+  "refreshSuccess": "Refresh successful",
+  "loadingMore": "Loading...",
+  "noMore": "No more data",
+  "loadError": "Load failed, tap to retry",
+  "paymentItem": {
+    "top_up": "Top Up",
+    "vipCard": "Buy VIP Card",
+    "carWash": "Car Wash"
+  },
+  "submitSuccess": "Submitted successfully",
+  "submitFailed": "Submission failed"
+}

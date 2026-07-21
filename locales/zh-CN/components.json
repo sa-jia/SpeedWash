@@ -1,0 +1,84 @@
+{
+  "phoneNumberField": {
+    "placeholder": "请输入手机号",
+    "required": "请输入手机号",
+    "selectAreaCode": "选择区号",
+    "areaCode": {
+      "argentina": "阿根廷",
+      "china": "中国"
+    }
+  },
+  "shopListItem": {
+    "status": {
+      "open": "营业中",
+      "closed": "未营业"
+    },
+    "view": "查看"
+  },
+  "vipCardSelector": {
+    "title": "选择 VIP 卡",
+    "noMore": "没有更多了",
+    "notUse": "不使用"
+  },
+  "couponCard": {
+    "defaultTitle": "VIP 卡",
+    "availableTimes": "{count} 次可用",
+    "expiryDate": "有效期至"
+  },
+  "payment": {
+    "title": "支付",
+    "pay": "支付"
+  },
+  "machineItem": {
+    "actions": {
+      "goWash": "去洗车"
+    }
+  },
+  "voucherCard": {
+    "from": {
+      "newUser": "邀请活动新人券",
+      "inviteReward": "邀请活动奖励",
+      "admin": "后台赠送",
+      "purchase": "付费购买"
+    }
+  },
+  "membershipCard": {
+    "maxWashCount": "最大洗车次数：{count}",
+    "validPeriod": "有效期：{days}天",
+    "allUserCanBuy": "全部人员可购",
+    "specialPrice": "特惠价格：前{count}张，{price}ARS",
+    "specialStock": "特惠库存: {count}"
+  },
+  "invitePageStatus": {
+    "notExist": "活动暂未开放",
+    "notStarted": "活动未开始",
+    "expired": "活动已结束",
+    "notNewUser": "仅限新用户参与活动",
+    "registered": "您已被其他用户邀请",
+    "notQualified": "您不符合活动参与条件",
+    "noReward": {
+      "inviter": "您已达到奖励上限",
+      "invitee": "奖励已被领取"
+    },
+    "notCompleted": "未完成规定任务",
+    "forbidden": "您的账号被限制参与活动"
+  },
+  "googleMap": {
+    "errors": {
+      "addMarkersFailed": "添加标记失败",
+      "addMarkersError": "添加标记出错：",
+      "locationFailed": "无法获取您的位置",
+      "browserNotSupported": "您的浏览器不支持地理定位"
+    },
+    "infoWindow": {
+      "content": "<div class=\"p-2\"><h3 class=\"font-bold\">{title}</h3>{address ? `<p class=\"text-sm mt-1\">${address}</p>` : ''}</div>"
+    }
+  },
+  "orderItem": {
+    "actions": {
+      "contact": "联系商家",
+      "refund": "申请退款",
+      "pay": "去付款"
+    }
+  }
+}

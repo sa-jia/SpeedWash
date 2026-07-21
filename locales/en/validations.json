@@ -1,0 +1,36 @@
+{
+  "phone": {
+    "required": "Phone number is required",
+    "invalid": "Invalid phone number format"
+  },
+  "password": {
+    "required": "Password is required",
+    "length": "Password must be 6-20 characters",
+    "mismatch": "Passwords do not match"
+  },
+  "verificationCode": {
+    "required": "Verification code is required",
+    "invalid": "Invalid verification code"
+  },
+  "email": {
+    "required": "Email is required",
+    "invalid": "Invalid email format"
+  },
+  "idCard": {
+    "required": "ID card number is required",
+    "invalid": "Invalid ID card number format"
+  },
+  "realName": {
+    "required": "Real name is required",
+    "invalid": "Invalid name format"
+  },
+  "address": {
+    "required": "Address is required",
+    "maxLength": "Address cannot exceed {max} characters"
+  },
+  "age": {
+    "required": "Age is required",
+    "min": "Minimum age is {min}",
+    "max": "Maximum age is {max}"
+  }
+}

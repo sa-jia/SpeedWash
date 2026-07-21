@@ -1,0 +1,141 @@
+/* @import 'modern-normalize'; */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import './variables.css';
+
+:root {
+  --vw: calc(100vw / 750);
+  font-size: calc(16 * var(--vw));
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+:root:root {
+  --vw: calc(100vw / 750);
+  font-size: calc(16 * var(--vw));
+}
+
+html,
+body {
+  background: var(--ink);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#app {
+  background: var(--ink);
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--primary-color);
+  color: #000;
+}
+
+/* ---- Tipografía display ---- */
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--primary-color);
+}
+
+/* ---- Detalle tech ---- */
+.hairline {
+  border: 1px solid var(--line-color);
+}
+
+.led-line {
+  background: linear-gradient(90deg, transparent, var(--primary-color) 35%, var(--primary-light) 50%, var(--primary-color) 65%, transparent);
+}
+
+.led-glow {
+  box-shadow: 0 0 40px -8px rgba(var(--primary-color-rgb), 0.6);
+}
+
+.spark-glow {
+  box-shadow: 0 0 36px -10px rgba(var(--accent-color-rgb), 0.65);
+}
+
+.text-glow {
+  text-shadow: 0 0 30px rgba(var(--primary-color-rgb), 0.45);
+}
+
+/* Toast con ícono (éxito/error/loading): el cuadrado fijo de Vant partía
+   palabras a la mitad ("Patente vinc/ulada"). Lo dejamos crecer a lo ancho
+   y el texto en una sola línea — los mensajes de éxito son cortos. */
+.van-toast--icon {
+  width: auto;
+  max-width: 80vw;
+  padding: 16px 20px;
+}
+
+.van-toast--icon .van-toast__text {
+  white-space: nowrap;
+}
+
+.tech-grid {
+  background-image:
+    linear-gradient(to right, rgba(var(--primary-color-rgb), 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(var(--primary-color-rgb), 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.tech-dots {
+  background-image: radial-gradient(rgba(var(--primary-color-rgb), 0.16) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+/* Glass / tarjeta oscura */
+.glass-card {
+  background: var(--surface-color);
+  border: 1px solid var(--line-color);
+  border-radius: 16px;
+}
+
+/* ── Desktop / pantallas anchas ──────────────────────────────────────────
+   La app es mobile-first (Vant) y su tamaño escala con el ancho de la
+   ventana (--vw = 100vw/750 → font-size crece con el viewport). En una PC
+   eso agranda y estira todos los componentes a lo ancho. Acá congelamos el
+   escalado al de un teléfono (~540px de diseño) y centramos la app en una
+   columna, con la nav-bar y el tabbar/submit-bar fijos alineados a ella. */
+@media screen and (min-width: 560px) {
+  :root:root {
+    --vw: calc(540px / 750);
+  }
+
+  html,
+  body {
+    background: #050506;
+  }
+
+  #app {
+    width: 540px;
+    max-width: 540px;
+    margin-inline: auto;
+    min-height: 100vh;
+    position: relative;
+    box-shadow: 0 0 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  }
+
+  /* Vant posiciona nav-bar, tabbar y submit-bar en position:fixed a todo el
+     ancho del viewport; los alineamos a la columna centrada de 540px. */
+  .van-nav-bar--fixed,
+  .van-tabbar,
+  .van-submit-bar,
+  .van-action-bar {
+    left: 50%;
+    right: auto;
+    width: 540px;
+    max-width: 540px;
+    transform: translateX(-50%);
+  }
+}
