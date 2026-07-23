@@ -65,6 +65,37 @@ export function useOrder() {
     }
   }
 
+  // Cantidad de pedidos de un filtro. El backend no tiene endpoint de conteo,
+  // así que pedimos una página de tamaño 1 y nos quedamos con el `total`.
+  const getOrderCount = async (state) => {
+    const { data, error } = await orderApi.washOrderPage({
+      pageNo: 1,
+      pageSize: 1,
+      state,
+    })
+
+    if (unref(error)) throw error
+
+    const { total } = unref(data) || {}
+    return typeof total === 'number' ? total : 0
+  }
+
+  // Conteos de varios filtros en paralelo. Si alguno falla lo dejamos en null
+  // (la vista no lo muestra) en vez de mostrar un 0: un número equivocado es
+  // peor que ninguno — "A pagar (0)" haría creer que no se debe nada.
+  const getOrderCounts = async (states) => {
+    const results = await Promise.allSettled(states.map(getOrderCount))
+
+    return states.reduce((counts, state, index) => {
+      const result = results[index]
+      if (result.status === 'rejected') {
+        console.error('获取订单数量失败:', state, result.reason)
+      }
+      counts[state] = result.status === 'fulfilled' ? result.value : null
+      return counts
+    }, {})
+  }
+
   // 格式化时间戳
   const formatTimestamp = (timestamp) => {
     if (!timestamp) return ''
@@ -122,6 +153,8 @@ export function useOrder() {
   }
 
   return {
-    getOrderList
+    getOrderList,
+    getOrderCount,
+    getOrderCounts
   }
 } 

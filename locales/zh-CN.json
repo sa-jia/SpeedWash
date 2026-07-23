@@ -194,7 +194,8 @@
         "store": "所属门店",
         "device": "设备名称",
         "washMode": "洗车模式",
-        "refund": "申请退款"
+        "refund": "申请退款",
+        "whatsapp_claim_message": "您好，我要投诉：我已支付此次洗车，但设备始终没有启动。\n\n订单号: {orderNo}\n日期: {date}\n门店: {store}\n设备: {machine}\n洗车: {mode}\n支付: {payment}\n金额: {amount}"
       },
       "payment": {
         "title": "支付",
@@ -752,7 +753,8 @@
       "actions": {
         "contact": "WhatsApp",
         "refund": "申请退款",
-        "pay": "去付款"
+        "pay": "去付款",
+        "claim": "投诉"
       },
       "status": {
         "1": "待付款",

@@ -13,12 +13,19 @@ const props = defineProps({
 const emit = defineEmits(["contact", "pay", "detail", "click"]);
 
 // 获取状态样式
+// Los dos estados de falla NO son lo mismo y por eso no comparten color:
+//   expired (showState 2, pago vencido) — la orden se venció sin pagar. No se
+//     cobró nada, no hay nada que reclamar: gris, es un pedido muerto.
+//   timeout (showState 3, inicio agotado) — pagó y la máquina no arrancó. Eso
+//     es plata cobrada sin servicio: rojo, y con botón de reclamo.
 const getStatusStyle = (status) => {
   const styleMap = {
     completed: "text-success",
     pending: "text-accent",
     processing: "text-primary",
     refund: "text-error",
+    expired: "text-secondary",
+    timeout: "text-error",
   };
   return styleMap[status] || "";
 };
@@ -33,6 +40,11 @@ const handleClick = () => emit("click", props.order);
 const showPayButton = computed(() => {
   return props.order.status !== "refund" && props.order.showState === 1;
 });
+
+// Pagó y la máquina nunca arrancó (showState 3). El botón de WhatsApp pasa a
+// ser "Reclamar" y el mensaje sale ya redactado como reclamo — el cliente no
+// tiene que explicar lo que la app ya sabe.
+const isFailedStart = computed(() => props.order.showState === 3);
 
 // El pack VIP cubrió el lavado → "$0" es confuso. Mostramos etiqueta en vez.
 // Nota: el backend `washOrderPage` NO devuelve `cardName` (sí lo hace en
@@ -82,11 +94,15 @@ const coveredByPack = computed(
           <van-button
             size="small"
             round
-            color="#25D366"
-            icon="chat-o"
+            :color="isFailedStart ? 'var(--brand-error)' : '#25D366'"
+            :icon="isFailedStart ? 'warning-o' : 'chat-o'"
             @click.stop="handleContact"
           >
-            {{ t('components.orderItem.actions.contact') }}
+            {{
+              isFailedStart
+                ? t('components.orderItem.actions.claim')
+                : t('components.orderItem.actions.contact')
+            }}
           </van-button>
 
           <!-- 去付款 -->

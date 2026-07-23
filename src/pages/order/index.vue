@@ -3,7 +3,7 @@ import { PAYMENT_FROM } from "@/constants";
 import { whatsappUrl } from "@/constants/contact";
 
 const router = useRouter();
-const { getOrderList } = useOrder();
+const { getOrderList, getOrderCounts } = useOrder();
 const { t } = useI18n();
 
 const { query } = useRoute();
@@ -19,6 +19,16 @@ const tabs = [
 const activeTab = ref(
   tabs.find((tab) => tab.value === +query.status)?.value || 1
 );
+
+// Contador de cada pestaña. `null` = todavía no lo sabemos (o falló la
+// llamada) → la pestaña se muestra sin número, nunca con un 0 inventado.
+const counts = ref(
+  tabs.reduce((acc, tab) => ({ ...acc, [tab.value]: null }), {})
+);
+
+const loadCounts = async () => {
+  counts.value = await getOrderCounts(tabs.map((tab) => tab.value));
+};
 
 // 列表相关
 const refreshing = ref(false);
@@ -67,6 +77,10 @@ const loadOrders = async () => {
       state: activeTab.value,
     });
 
+    // La lista ya nos trae el total del filtro activo: lo aprovechamos para
+    // mantener ese contador al día sin pedir otra vez.
+    if (typeof total === "number") counts.value[activeTab.value] = total;
+
     orders.value.push(...list);
     finished.value = orders.value.length >= total;
     if (!finished.value) pageNo.value++;
@@ -92,7 +106,14 @@ const handleContact = (order) => {
     ? t("routes.order.detail.payment_methods.packGeneric")
     : "-";
 
-  const msg = t("routes.order.detail.whatsapp_message", {
+  // Pagó y la máquina no arrancó (showState 3) → el mensaje sale redactado
+  // como reclamo, no como consulta genérica.
+  const template =
+    order.showState === 3
+      ? "routes.order.detail.whatsapp_claim_message"
+      : "routes.order.detail.whatsapp_message";
+
+  const msg = t(template, {
     orderNo: order.orderNo || order.orderId,
     date: order.createTime || "-",
     store: order.storeName || "-",
@@ -123,6 +144,14 @@ function handleClick(order) {
   router.push(`/order/${order.orderId}`);
 }
 
+// Tirar para refrescar: además de la lista, recalculamos todos los contadores
+// (pagar un pedido mueve el número de dos pestañas, no solo de la activa).
+// No lo esperamos: el contador no tiene por qué demorar el refresh de la lista.
+const onPullRefresh = async () => {
+  loadCounts();
+  await onRefresh();
+};
+
 // 切换标签时刷新
 watch(activeTab, () => {
   onRefresh();
@@ -130,6 +159,7 @@ watch(activeTab, () => {
 
 // 初始加载
 onMounted(() => {
+  loadCounts();
   onRefresh();
 });
 </script>
@@ -138,12 +168,14 @@ onMounted(() => {
   <div class="order-container h-default flex flex-col">
     <!-- 订单状态切换 -->
     <van-tabs v-model:active="activeTab" sticky>
-      <van-tab
-        v-for="tab in tabs"
-        :key="tab.value"
-        :title="tab.title"
-        :name="tab.value"
-      />
+      <van-tab v-for="tab in tabs" :key="tab.value" :name="tab.value">
+        <template #title>
+          {{ tab.title }}
+          <span v-if="counts[tab.value] !== null" class="tab-count">
+            ({{ counts[tab.value] }})
+          </span>
+        </template>
+      </van-tab>
     </van-tabs>
 
     <!-- TODO: 订单列表高度, 滑动不正常 iOS, 安卓好一些 -->
@@ -151,7 +183,7 @@ onMounted(() => {
       <!-- 订单列表 -->
       <van-pull-refresh
         v-model="refreshing"
-        @refresh="onRefresh"
+        @refresh="onPullRefresh"
         :success-text="t('common.refreshSuccess')"
         class="flex-1"
       >
@@ -184,4 +216,13 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+/* El contador acompaña al nombre de la pestaña sin competirle: mismo color,
+   un punto más chico y semitransparente. La pestaña activa lo hereda en
+   primary junto con el título. */
+.tab-count {
+  font-size: 0.85em;
+  opacity: 0.65;
+  margin-left: 1px;
+}
+</style>

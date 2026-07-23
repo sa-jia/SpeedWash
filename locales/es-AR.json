@@ -79,7 +79,7 @@
         "viewAll": "Ver todo",
         "status": {
           "inProgress": "En curso",
-          "pending": "Pendiente",
+          "pending": "A pagar",
           "completed": "Completado",
           "refund": "Reembolso"
         }
@@ -148,7 +148,7 @@
         "tabs": {
           "1": "Todos",
           "2": "En curso",
-          "3": "Pendientes",
+          "3": "A pagar",
           "4": "Completados",
           "5": "Reembolsos"
         },
@@ -191,7 +191,7 @@
         "status": {
           "1": "Todos",
           "2": "En curso",
-          "3": "Pendientes",
+          "3": "A pagar",
           "4": "Completados",
           "5": "Reembolsos",
           "cancelled": "Cancelado",
@@ -204,7 +204,8 @@
         "store": "Sucursal",
         "device": "Equipo",
         "washMode": "Modo de lavado",
-        "refund": "Solicitar reembolso"
+        "refund": "Solicitar reembolso",
+        "whatsapp_claim_message": "Hola, necesito hacer un reclamo: pagué este lavado y la máquina nunca arrancó.\n\nN°: {orderNo}\nFecha: {date}\nSucursal: {store}\nMáquina: {machine}\nLavado: {mode}\nPago: {payment}\nMonto: {amount}"
       },
       "payment": {
         "title": "Pagar",
@@ -811,7 +812,8 @@
       "actions": {
         "contact": "WhatsApp",
         "refund": "Solicitar reembolso",
-        "pay": "Pagar ahora"
+        "pay": "Pagar ahora",
+        "claim": "Reclamar"
       },
       "status": {
         "1": "Pendiente de pago",

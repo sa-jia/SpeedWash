@@ -77,7 +77,7 @@
         "viewAll": "View All",
         "status": {
           "inProgress": "In Progress",
-          "pending": "Pending",
+          "pending": "To pay",
           "completed": "Completed",
           "refund": "Refund/After-sale"
         }
@@ -146,7 +146,7 @@
         "tabs": {
           "1": "All",
           "2": "Processing",
-          "3": "Pending",
+          "3": "To pay",
           "4": "Completed",
           "5": "Refund"
         },
@@ -202,7 +202,8 @@
         "store": "Store",
         "device": "Device Name",
         "washMode": "Wash Mode",
-        "refund": "Apply Refund"
+        "refund": "Apply Refund",
+        "whatsapp_claim_message": "Hi, I need to file a claim: I paid for this wash and the machine never started.\n\nNo: {orderNo}\nDate: {date}\nStore: {store}\nMachine: {machine}\nWash: {mode}\nPayment: {payment}\nAmount: {amount}"
       },
       "payment": {
         "title": "Payment",
@@ -772,7 +773,8 @@
       "actions": {
         "contact": "WhatsApp",
         "refund": "Apply Refund",
-        "pay": "Pay Now"
+        "pay": "Pay Now",
+        "claim": "File a claim"
       },
       "status": {
         "1": "Unpaid",

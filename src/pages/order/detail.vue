@@ -44,6 +44,15 @@ const washStatus = computed(() => {
   return t(`routes.order.detail.wash_status.${data.value?.washStatus}`);
 });
 
+// Pagó y la máquina nunca arrancó: el CTA de abajo pasa de "Contactar" a
+// "Reclamar" (rojo), igual que en la tarjeta de la lista.
+// Miramos los dos campos porque describen el mismo evento y no está
+// confirmado que `washOrderInfo` devuelva `showState` (la lista sí lo manda;
+// acá el único que la página ya usa con certeza es `washStatus`).
+const isFailedStart = computed(
+  () => data.value?.showState === 3 || data.value?.washStatus === 4
+);
+
 // Lavado activo → mostramos botón de emergencia. `washStatus`: 1 no iniciado,
 // 2 lavando, 3 completado, 4 timeout de arranque.
 // Incluimos 2, 3 y 4 porque:
@@ -110,7 +119,13 @@ const onContactWhatsApp = () => {
     ? `${formatPrice(d.originalPrice)} (cubierto por ${d.cardName})`
     : formatPrice(d.finalPrice);
 
-  const msg = t("routes.order.detail.whatsapp_message", {
+  // Mismo criterio que la lista: si pagó y la máquina no arrancó, el mensaje
+  // sale redactado como reclamo.
+  const template = isFailedStart.value
+    ? "routes.order.detail.whatsapp_claim_message"
+    : "routes.order.detail.whatsapp_message";
+
+  const msg = t(template, {
     orderNo,
     date: dateStr,
     store,
@@ -212,9 +227,13 @@ onMounted(() => {
        Reembolsos, consultas y quejas se manejan por acá (manual, sin panel). -->
   <van-action-bar>
     <van-action-bar-button
-      color="#25D366"
-      icon="chat-o"
-      :text="t('routes.order.detail.whatsapp_contact')"
+      :color="isFailedStart ? 'var(--brand-error)' : '#25D366'"
+      :icon="isFailedStart ? 'warning-o' : 'chat-o'"
+      :text="
+        isFailedStart
+          ? t('components.orderItem.actions.claim')
+          : t('routes.order.detail.whatsapp_contact')
+      "
       @click="onContactWhatsApp"
     />
   </van-action-bar>

@@ -10,6 +10,116 @@ Fecha: 2026-06-09
 
 ---
 
+## 📋 Mis pedidos — contadores, nombres claros y reclamo por WhatsApp (2026-07-23)
+
+### Qué significaba cada estado (auditoría)
+
+Disparado por una pregunta razonable: *"¿qué es En curso y qué es Pendientes?"*.
+Resultó que **hay tres enums de "estado" distintos, y dos usan los mismos
+números para cosas diferentes**:
+
+**A — `state`: el filtro de la pestaña** (lo que se le manda a la API)
+`1` todos · `2` en curso · `3` **esperando pago** · `4` completados
+
+**B — `showState`: el estado de cada pedido** (lo que devuelve el backend)
+`1` pendiente de pago · `2` pago vencido · `3` timeout de arranque ·
+`4` **lavando** · `5` completado
+
+**C — `washStatus`: el ciclo de lavado** (solo en el detalle)
+`1` no iniciado · `2` lavando · `3` finalizado · `4` timeout de arranque
+
+Ojo con la colisión: **`4` como filtro es "Completados", pero `4` como estado
+de pedido es "Lavando"**. Son enums independientes que comparten numeración —
+viene así del white-label original.
+
+La confusión de fondo: leídas juntas, "En curso" y "Pendientes" parecían dos
+etapas del lavado, cuando **"Pendientes" era de la plata, no del lavado**.
+
+### Cambios
+
+- **"Pendientes"/"Pendiente" → "A pagar"** en los tres lugares donde aparecía
+  (pestaña, acceso directo de Mi cuenta, y el estado del detalle). En inglés
+  "To pay". El chino ya decía 待付款 ("esperando pago") — siempre estuvo bien,
+  se perdió en la traducción al español. — [es-AR.json](locales/es-AR.json),
+  [en.json](locales/en.json)
+- **Contadores por pestaña** (`Todos (10)`, `A pagar (0)`, …) y **globito** en
+  los tres accesos directos de Mi cuenta. El backend no tiene endpoint de
+  conteo: pedimos una página de `pageSize: 1` por filtro y usamos el `total`.
+  La pestaña activa se mantiene al día gratis con el `total` que ya trae la
+  lista. — [useOrder.js](src/composables/useOrder.js),
+  [order/index.vue](src/pages/order/index.vue), [mine-page.vue](src/pages/mine-page.vue)
+  - En las pestañas el `(0)` se muestra (es información: no debés nada); en los
+    globitos no (un 0 flotando sobre un icono es ruido).
+  - Si la llamada falla **no se muestra número**, nunca un `0` por las dudas:
+    un "A pagar (0)" falso haría creer que no hay plata pendiente.
+  - En Mi cuenta el conteo **solo se pide con cuenta real**. Un invitado no
+    tiene token y `washOrderPage` le devolvería `999`, que en una página
+    protegida lo patea a `/login` (ver [useApi.js](src/composables/useApi.js)) —
+    o sea que abrir Mi cuenta lo habría expulsado. Mismo criterio que `myInfo`.
+- **Los dos estados de falla ahora se distinguen** — antes los dos se pintaban
+  del mismo azul que un pedido normal, porque `getStatusStyle` no tenía entrada
+  para ninguno: pasaban desapercibidos. — [order-item.vue](src/components/order/order-item.vue)
+  - **Pago vencido** (`showState 2`): **gris**. No se cobró nada, no hay nada
+    que reclamar — es un pedido muerto.
+  - **Timeout de arranque** (`showState 3`): **rojo**, y el botón de WhatsApp
+    pasa a decir **"Reclamar"**. Es plata cobrada sin servicio.
+- **Mensaje de reclamo propio**: *"Hola, necesito hacer un reclamo: pagué este
+  lavado y la máquina nunca arrancó"* + los datos del pedido, en vez del
+  genérico *"tengo una consulta sobre este pedido"*. En la lista y en el
+  detalle, en los tres idiomas. — [order/detail.vue](src/pages/order/detail.vue)
+  - En el detalle se chequean **los dos campos** (`showState === 3` o
+    `washStatus === 4`): describen el mismo evento, pero no está confirmado que
+    `washOrderInfo` devuelva `showState` (su `getOrderStatus` está definido y
+    no se usa en ningún lado). `washStatus` sí lo usa la página con certeza.
+- **No se agregó pestaña de reclamos**: el filtro `state` de la API no tiene
+  valor para los estados de falla. Filtrar del lado del cliente rompería la
+  paginación y el contador (ver pendiente **2.11**). El caso real es que se
+  reclama al toque, y recién ocurrido ese pedido está arriba de todo en "Todos".
+- Limpieza: se sacaron tres imports de PNG muertos en `mine-page.vue`.
+
+---
+
+## 🐛 El escáner se colgaba después de leer el QR (2026-07-23)
+
+**Síntoma reportado:** al escanear el QR de una máquina la cámara leía bien
+(se congelaba el último cuadro y aparecía el punto azul que marca el código
+detectado), pero **la app se quedaba ahí para siempre**. Pasaba igual con el
+QR viejo (`/washer/1`) y con el nuevo (`/washer/3`).
+
+**Causa:** en `onScanSuccess` la navegación estaba **dentro del `catch`** del
+`new URL(text)`. O sea que el único caso que navegaba era que el contenido
+del QR **no** fuera una URL válida. Como el QR de la máquina sí es una URL, el
+parseo nunca fallaba: se comparaba contra `VITE_BACKGROUND_URL` (que además no
+está definida), no matcheaba, se hacía un `console.log` y la función terminaba
+sin hacer nada. La lectura del QR nunca estuvo rota — el problema era qué se
+hacía con el texto leído.
+
+**Arreglo** — [scan-page.vue](src/pages/scan-page.vue): ahora todos los casos
+tienen salida.
+
+| QR contiene | Acción |
+|---|---|
+| URL nuestra (`/washer/:id`, `/store/:id`, `/invite/:code`) | navega dentro de la app |
+| URL de otro host de `speedwash.com.ar` | carga la URL (deja que el server redirija) |
+| URL de un tercero | pantalla de resultado con aviso de seguridad |
+| texto plano (`3`, `machine3`, `washer-3`) | navega a `/washer/<n>` |
+| cualquier otra cosa | pantalla de resultado |
+
+Dos detalles:
+
+- Se navega **con el router de Vue**, no con `window.location`: el mapeo de QR
+  viejos (`1→3`, `2→4`) vive en el `beforeEnter` de `/washer/:id`
+  ([router/index.js](src/router/index.js)), así que tiene que pasar por el
+  router para seguir aplicando.
+- Antes de navegar se valida con `router.resolve()` que la ruta **exista**. No
+  hay ruta catch-all en el proyecto: un `replace()` a un path sin match no
+  renderiza nada y dejaría la pantalla colgada igual que el bug original.
+
+El QR se matchea también por path aunque el host no sea el actual, por si
+quedó alguno impreso con otro dominio.
+
+---
+
 ## 🚨 Caída del envío de SMS — pasarela del proveedor (2026-07-06)
 
 Desde ~2026-07-05 el envío de códigos por SMS **falla para todos los números
@@ -879,6 +989,31 @@ crece a N sucursales grandes se vuelve caro. Ver
 **Acción solicitada:** agregar `iotStatus` al schema `StoreIot`, así
 `storeApi.detail` devuelve todo en una sola request y el frontend puede
 eliminar el workaround.
+
+### 2.11 `washOrderPage` no permite filtrar los pedidos fallidos
+**Prioridad:** MEDIA (bloquea una pestaña de "reclamos" en Mis pedidos).
+**Endpoint involucrado:** `POST /user/order/washOrderPage`, parámetro `state`.
+
+**Contexto:** el filtro `state` solo acepta `1` (todos), `2` (en curso),
+`3` (a pagar) y `4` (completados). Los dos estados de falla que sí existen
+a nivel de pedido — `showState 2` (pago vencido) y `showState 3` (timeout de
+arranque: pagó y la máquina nunca arrancó) — **no tienen valor de filtro**.
+Solo aparecen mezclados dentro de "Todos".
+
+El caso que importa es `showState 3`: es plata cobrada sin servicio, o sea
+un reclamo. Hoy el cliente tiene que encontrarlo scrolleando "Todos".
+
+**Workaround en frontend (ya aplicado):** no se agregó pestaña — filtrar del
+lado del cliente rompería la paginación (el `total` que devuelve la API es el
+de *todos* los pedidos, no el del subconjunto filtrado, así que el "cargar
+más" y el contador de esa pestaña mentirían). En su lugar, esos pedidos se
+destacan en rojo dentro de "Todos" y su botón de WhatsApp pasa a decir
+"Reclamar" con el mensaje ya redactado como reclamo. Ver
+[order-item.vue](src/components/order/order-item.vue).
+
+**Acción solicitada:** agregar un valor de `state` que devuelva los pedidos
+fallidos (`showState` 2 y 3), con su `total` correspondiente. Con eso la
+pestaña de reclamos sale paginada y con contador confiable.
 
 ---
 
