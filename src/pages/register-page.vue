@@ -16,7 +16,6 @@ const {
   getVerifyCode,
   smsRequestId,
   isActive,
-  agreement,
   formRef,
   phoneRules,
   verifyCodeRules,
@@ -101,16 +100,15 @@ const onSubmit = async () => {
   }
 };
 
-// 显示用户协议
+// Muestra los términos. Ya no marca ningún checkbox: la aceptación ocurre al
+// tocar "Crear cuenta" (ver el aviso bajo el botón), así que este diálogo es
+// solo para leerlos.
 const showAgreement = () => {
   showDialog({
     title: t("routes.register.agreementTitle"),
     allowHtml: true,
-    message: data.value.val,
+    message: data.value?.val,
     confirmButtonText: t("routes.register.agreementConfirm"),
-  })
-  .then(() => {
-    agreement.value = true;
   });
 };
 
@@ -177,15 +175,21 @@ const goToLogin = () => {
 
     <!-- Bloque grisado/inhabilitado hasta que se envíe el SMS -->
     <div :class="{ 'step-block--disabled': !codeSent }">
-      <van-cell-group inset>
+      <van-cell-group inset class="form-wells">
+        <!-- El SMS llega desde un número corto de 5 dígitos y el código es de
+             4: el usuario confundía uno con otro. El placeholder lo dice y el
+             maxlength de 4 no lo deja tipear de más. `one-time-code` habilita
+             el autocompletado del SMS en iOS/Android, que evita el problema
+             de raíz cuando funciona. -->
         <van-field
           v-model="formData.verifyCode"
           name="verifyCode"
           :placeholder="t('routes.register.codePlaceholder')"
           :disabled="!codeSent"
           :rules="codeSent ? verifyCodeRules : []"
-          maxlength="6"
+          maxlength="4"
           type="digit"
+          autocomplete="one-time-code"
           center
         />
 
@@ -208,20 +212,16 @@ const goToLogin = () => {
         />
       </van-cell-group>
 
-      <!-- Código de invitación: oculto por defecto. Si vino por URL ya está
-           visible y precargado; si no, aparece como link colapsable. -->
-      <div class="mx-4 mt-3">
-        <button
-          v-if="!showInviteField"
-          type="button"
-          class="text-22 text-primary cursor-pointer bg-transparent border-none p-0"
-          :disabled="!codeSent"
-          @click="showInviteField = true"
-        >
-          {{ t("routes.register.inviteToggle") }}
-        </button>
-      </div>
-      <van-cell-group v-if="showInviteField" inset class="!mt-3">
+      <!-- Código de invitación: SOLO visible si vino en la URL
+           (/register?inviteCode=X, adonde lleva /invite/:code).
+           Se quitó el link "¿Tenés código de invitación?" que lo abría a mano:
+           el programa de referidos es del white-label y hoy no está operativo
+           —no hay campaña cargada en el backoffice, y sus pantallas siguen con
+           los banners en chino/inglés—, así que ofrecía completar un campo que
+           no hace nada. El campo se mantiene cableado para que, si algún día se
+           activa una campaña, los links de invitación sigan funcionando sin
+           tocar nada. -->
+      <van-cell-group v-if="showInviteField" inset class="form-wells !mt-3">
         <van-field
           v-model="formData.inviteCode"
           name="inviteKey"
@@ -231,34 +231,29 @@ const goToLogin = () => {
       </van-cell-group>
     </div>
 
-    <!-- Términos -->
-    <van-cell-group inset class="!my-8 !bg-transparent text-xl">
-      <van-checkbox
-        v-model="agreement"
-        shape="round"
-        checked-color="var(--primary-color)"
-        :disabled="!codeSent"
-      >
-        {{ t("routes.register.agreementPrefix") }}
-        <span class="text-primary cursor-pointer" @click.stop="showAgreement">
-          {{ t("routes.register.agreementText") }}
-        </span>
-      </van-checkbox>
-    </van-cell-group>
-
-    <!-- Crear cuenta -->
-    <div class="mx-4 mt-6">
+    <!-- Crear cuenta. La aceptación de términos va en el mismo tap: antes era
+         un checkbox aparte que dejaba el botón apagado hasta tildarlo, sin que
+         fuera evidente por qué no se podía seguir. El aviso pegado al botón es
+         el patrón estándar de alta y ahorra un paso. -->
+    <div class="mx-4 mt-8">
       <van-button
         round
         block
         type="primary"
         native-type="submit"
         :loading="loading"
-        :disabled="!agreement || !codeSent"
+        :disabled="!codeSent"
         class="h-48px"
       >
         {{ t("routes.register.submit") }}
       </van-button>
+
+      <p class="agreement-note">
+        {{ t("routes.register.agreementInline") }}
+        <span class="agreement-note__link" @click="showAgreement">
+          {{ t("routes.register.agreementText") }}
+        </span>
+      </p>
     </div>
   </van-form>
 
@@ -335,5 +330,21 @@ const goToLogin = () => {
   opacity: 0.45;
   pointer-events: none;
   transition: opacity 0.25s ease;
+}
+
+/* Aviso de términos bajo el botón: legible, pero sin competir con el CTA. */
+.agreement-note {
+  margin: 12px 0 0;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.agreement-note__link {
+  color: var(--primary-color);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 </style>

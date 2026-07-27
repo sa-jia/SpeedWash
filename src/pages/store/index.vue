@@ -1,6 +1,7 @@
 <script setup>
 import { getImageUrl } from "@/utils";
 import { PRE_LAUNCH } from "@/constants";
+import { STAFF_HOURS } from "@/constants/service-hours";
 import { washApi } from "@/api";
 import IconNav from "@/assets/store/icon_nav.png";
 import DefaultBanner from "@/assets/store/store-banner-default.png";
@@ -149,6 +150,81 @@ const handleBuyVip = () => {
           </van-button>
         </template>
       </van-cell>
+
+      <!-- Servicios y horarios. Van separados a propósito: las máquinas son
+           24 hs y el personal no. Un solo "horario de sucursal" con el del
+           personal haría creer que el lavadero cierra a las 16. -->
+      <van-cell>
+        <template #title>
+          <div class="service-row">
+            <van-icon name="clock-o" class="service-row__icon service-row__icon--always" />
+            <div class="min-w-0">
+              <div class="service-row__name">
+                {{ t("routes.store.services.selfService.name") }}
+              </div>
+              <div class="service-row__hours">
+                {{ t("routes.store.services.selfService.hours") }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Aspirado: gratis y siempre disponible. Va junto al lavado (los
+               dos son 24 hs) y separado del servicio con personal — si no,
+               el cliente cree que para el interior depende siempre de que
+               haya alguien en el local. -->
+          <div class="service-row">
+            <van-icon name="brush-o" class="service-row__icon service-row__icon--always" />
+            <div class="min-w-0">
+              <div class="service-row__name">
+                {{ t("routes.store.services.vacuum.name") }}
+                <span class="service-badge">
+                  {{ t("routes.store.services.vacuum.badge") }}
+                </span>
+              </div>
+              <div class="service-row__hours">
+                {{ t("routes.store.services.vacuum.hours") }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Los dos servicios que dependen del personal comparten horario,
+               así que va una sola vez como encabezado del grupo. Cada uno
+               lleva su etiqueta: el secado entra sin cargo, la limpieza
+               interior no — es la distinción que evita el malentendido en el
+               mostrador. -->
+          <div class="service-row service-row--staffed">
+            <van-icon name="manager-o" class="service-row__icon" />
+            <div class="min-w-0 flex-1">
+              <div class="service-row__name">
+                {{ t("routes.store.services.staffed.name") }}
+              </div>
+              <div class="service-row__hours">
+                {{ t("routes.store.services.staffed.hours", {
+                  weekdays: STAFF_HOURS.weekdays,
+                  saturday: STAFF_HOURS.saturday,
+                }) }}
+              </div>
+
+              <div class="service-sub">
+                <span>{{ t("routes.store.services.staffed.drying.name") }}</span>
+                <span class="service-badge">
+                  {{ t("routes.store.services.staffed.drying.badge") }}
+                </span>
+              </div>
+              <div class="service-sub">
+                <span>{{ t("routes.store.services.staffed.interior.name") }}</span>
+                <span class="service-badge service-badge--paid">
+                  {{ t("routes.store.services.staffed.interior.badge") }}
+                </span>
+              </div>
+
+              <div class="service-row__note">
+                {{ t("routes.store.services.staffed.note") }}
+              </div>
+            </div>
+          </div>
+        </template>
+      </van-cell>
     </van-cell-group>
 
     <!-- Comprar Pack -->
@@ -248,6 +324,102 @@ const handleBuyVip = () => {
   background: rgba(var(--primary-color-rgb), 0.08);
   white-space: nowrap;
   font-weight: 500;
+}
+
+/* ── Servicios y horarios ─────────────────────────────────────────────── */
+.service-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.service-row + .service-row {
+  margin-top: 12px;
+}
+
+/* Línea divisoria antes del servicio con personal: arriba queda lo que está
+   siempre disponible (lavado + aspirado), abajo lo que depende del horario
+   y se paga aparte. Son dos categorías distintas para el cliente. */
+.service-row.service-row--staffed {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-color);
+}
+
+/* Sub-servicios del grupo "con personal": nombre a la izquierda, etiqueta a
+   la derecha, para que se lean en columna y la comparación sea inmediata. */
+.service-sub {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.service-sub .service-badge {
+  margin-left: 0;
+  flex-shrink: 0;
+}
+
+/* "Gratis"/"Incluido" en verde: es buena noticia y argumento de venta. */
+.service-badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  vertical-align: middle;
+  color: var(--brand-success);
+  background: rgba(var(--brand-success-rgb), 0.12);
+  border: 1px solid rgba(var(--brand-success-rgb), 0.35);
+}
+
+/* Lo que se cobra aparte va en ámbar, no en verde: es la excepción dentro
+   del bloque y tiene que distinguirse de un vistazo de lo que sí entra. */
+.service-badge--paid {
+  color: var(--accent-light);
+  background: rgba(var(--accent-color-rgb), 0.12);
+  border-color: rgba(var(--accent-color-rgb), 0.4);
+}
+
+.service-row__icon {
+  font-size: 18px;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* El 24 hs es la ventaja del formato automático: va en el celeste de marca
+   para que sea lo primero que se lee del bloque. */
+.service-row__icon--always {
+  color: var(--primary-color);
+}
+
+.service-row__name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.service-row__hours {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 3px;
+  line-height: 1.4;
+}
+
+/* "Se abona aparte" en ámbar: es la letra chica del bloque, la que evita
+   que alguien con pack llegue creyendo que el interior ya está pago. */
+.service-row__note {
+  font-size: 12px;
+  color: var(--accent-light);
+  margin-top: 5px;
+  line-height: 1.45;
 }
 
 /* Botón Comprar Pack */

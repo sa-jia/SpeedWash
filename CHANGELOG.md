@@ -5,8 +5,137 @@ Este changelog documenta cambios aplicados al frontend de la PWA Vue (carpeta
 (mantenido por el proveedor en China). El sitio institucional Next.js
 (carpeta `web/`) no está incluido — se versiona por separado.
 
-Branch: `fix/app-lavar-cleanup`
-Fecha: 2026-06-09
+Branch: `main` (arrancó en `fix/app-lavar-cleanup`, ya integrada)
+Última actualización: 2026-07-27
+
+---
+
+## 💳 El cliente pagaba el pack y la app lo deslogueaba (2026-07-27)
+
+**Síntoma reportado:** el cliente compra un pack por Mercado Pago, la app tira
+un error, **lo desloguea** y queda sin saber si el pago salió o no. Tiene que
+volver a loguearse y adivinar.
+
+**Causa (confirmada en código, no reproducida):** la ruta `/payment/result`
+—`name: "PaymentResult"`— **no estaba en `isVisiblePages`**
+([router.js](src/modules/router.js)), así que el guard la trataba como
+protegida. La vuelta desde Mercado Pago es una **carga completa de página desde
+un dominio externo**: si en ese momento no hay token en `localStorage`, el
+guard lo manda a `/login`.
+
+Lo absurdo del caso: **para un pack esa pantalla no necesita sesión**.
+`usePaymentCheck` sale por el early-return cuando no es orden de lavado, y el
+estado del pago llega en los query params que agrega MP (ver
+[payment-status.js](src/utils/payment-status.js)). La app tenía toda la
+información para mostrar "pago aprobado" y en cambio mostraba un login.
+
+**Arreglos:**
+
+- `PaymentResult` pasa a ser pública, en el guard
+  ([router.js](src/modules/router.js)) y en el manejo del código 999
+  ([useApi.js](src/composables/useApi.js)). Volver de MP ya no puede patear a
+  login.
+- **Órdenes de lavado:** sin token no se hace polling de `payResultCheck`
+  ([usePaymentCheck.js](src/composables/usePaymentCheck.js)). Es un endpoint
+  autenticado: devolvía 999 en loop y dejaba la pantalla colgada en el spinner.
+  Se cae al estado que informa MP — imperfecto (no dice si la máquina arrancó)
+  pero es una respuesta en vez de una pantalla trabada.
+- **Botón de acción a la home cuando no hay cuenta real**
+  ([payment/result.vue](src/pages/payment/result.vue)): `/order/:id`,
+  `/vouchers` y `/wallet` también son protegidas y rebotaban al mismo login que
+  veníamos de arreglar.
+
+**Lo que esto arregla y lo que no:** el cliente ahora **ve el resultado de su
+pago**. Pero si la causa de fondo es que vuelve sin sesión, va a seguir
+teniendo que loguearse de nuevo. Eso queda como pendiente **2.13**.
+
+---
+
+## 🏪 Servicios y horarios en el detalle de sucursal (2026-07-27)
+
+Debajo de la dirección, que es donde alguien mira antes de salir para el local.
+Cuatro servicios en dos grupos:
+
+| | Servicio | Disponibilidad |
+|---|---|---|
+| 🕐 | Lavado automático | 24 hs, todos los días |
+| 🧹 | Aspirado · **Gratis** | Self-service, 24 hs |
+| 👤 | Secado exterior · **Incluido** | Lun a Vie 8-16 · Sáb 9-17 |
+| 👤 | Limpieza interior · **Se abona aparte** | Lun a Vie 8-16 · Sáb 9-17 |
+
+**Por qué van separados y no como un único "horario de sucursal":** publicar el
+horario del personal a secas haría creer que **el lavadero cierra a las 16**, y
+se perderían los lavados de noche y domingo — que son justamente la ventaja del
+formato automático. El horario del personal aparece **una sola vez** como
+encabezado del grupo, y cada servicio lleva su etiqueta: verde lo que entra sin
+cargo, ámbar lo que se cobra. De los cuatro servicios uno solo tiene costo
+extra, y así se ve de un vistazo.
+
+**La letra chica aclara que la limpieza interior NO entra en los packs de la
+app.** Sin eso, alguien que ya compró un pack asume razonablemente que está
+incluido, y el malentendido se descubre en el mostrador. Por el mismo motivo
+esto **no** va en la pantalla de pago: ahí "se abona aparte" sembraría la duda
+de si el lavado incluye el secado, justo antes de pagar. Mismo dato, efecto
+opuesto según dónde se ponga.
+
+Horarios hardcodeados en [service-hours.js](src/constants/service-hours.js) —
+el backend solo devuelve `opening` (abierto sí/no), no expone horarios, así que
+cambiarlos pide redeploy. — [store/index.vue](src/pages/store/index.vue)
+
+---
+
+## 📝 Registro más claro — US (+1), campos visibles, código de 4 y términos en un tap (2026-07-27)
+
+- **Estados Unidos (+1)** en el selector de país
+  ([countries.js](src/constants/countries.js)). Cayó el primer cliente con
+  línea yanqui. NANP son 10 dígitos igual que AR, así que hasta el formateo del
+  aviso "te enviamos un código a…" sale bien. El patrón exige que ni el código
+  de área ni el de central empiecen con 0 o 1: rebota el error de tipear el "1"
+  del país adentro del número (`1786302478` en vez de `7863024788`).
+  - De paso: el bloque `country` **faltaba entero en el locale chino** — el
+    picker mostraba las keys crudas. Se completó con los seis países.
+- **Los campos ahora se ven como campos.** El input compartía fondo
+  (`--surface-color`) con la tarjeta que lo contiene, así que quien llegaba por
+  primera vez no distinguía dónde escribir ni si tocar el "+54" o el casillero.
+  Ahora el país es un **chip celeste** (se toca) y el input un **pozo más claro
+  con borde** que se enciende al enfocarlo. Clase reutilizable `.form-wells` en
+  [main.css](src/styles/main.css), aplicada también a login y cambiar
+  contraseña, que usan el mismo campo de teléfono.
+  - Un campo con error ahora pinta el borde en rojo. Antes el único indicio era
+    el texto chico de abajo, fácil de pasar por alto.
+- **Código SMS: de 6 a 4 dígitos.** El código es de 4 y el `maxlength` decía 6.
+  El SMS llega desde un **número corto de 5 dígitos** y la gente confundía uno
+  con otro. El placeholder ahora lo dice, y se agregó
+  `autocomplete="one-time-code"`: en iOS/Android ofrece el código sobre el
+  teclado apenas llega, lo que evita el problema de raíz.
+- **Términos y condiciones en el mismo tap.** Fuera el checkbox que dejaba
+  "Crear cuenta" apagado hasta tildarlo, sin que fuera evidente por qué no se
+  podía continuar. El aviso queda pegado al botón — patrón estándar de alta, un
+  paso menos.
+- **Se quita el link "¿Tenés código de invitación?"**: el programa de referidos
+  viene del white-label y **no está operativo** — no hay campaña cargada en el
+  backoffice, las cuatro pantallas (`/invite/*`) están huérfanas (ningún botón
+  de la app lleva ahí) y sus banners siguen en chino/inglés. Ofrecía completar
+  un campo inerte. El campo sigue cableado para cuando llega por URL
+  (`/register?inviteCode=X`), así los links de invitación funcionarían sin
+  tocar código si algún día se activa una campaña.
+
+— [register-page.vue](src/pages/register-page.vue),
+[phone-number-field.vue](src/components/phone-number-field.vue),
+[login-page.vue](src/pages/login-page.vue),
+[change-password.vue](src/components/change-password.vue)
+
+---
+
+## 🚪 Se apaga el modo pre-apertura — la sucursal abre (2026-07-27)
+
+`PRE_LAUNCH = false` en [constants/index.js](src/constants/index.js). El badge
+vuelve a reflejar el estado real que manda el backend (en vez del ámbar
+"Próximamente" en home, listado y detalle) y desaparece el aviso "Todavía no
+abrimos" de la home.
+
+Se deja el flag y sus textos en los tres idiomas: sirven tal cual para una
+sucursal nueva que todavía no opere.
 
 ---
 
@@ -1014,6 +1143,99 @@ destacan en rojo dentro de "Todos" y su botón de WhatsApp pasa a decir
 **Acción solicitada:** agregar un valor de `state` que devuelva los pedidos
 fallidos (`showState` 2 y 3), con su `total` correspondiente. Con eso la
 pestaña de reclamos sale paginada y con contador confiable.
+
+### 2.12 Cancelar/reembolsar un lavado antes de que arranque el ciclo
+**Prioridad:** ALTA (afecta la confianza: un lavado iniciado por error
+—sobre todo pagado con un pack— no tiene forma de deshacerse).
+
+**Contexto:** con packs prepagos (Tarjetas VIP), el usuario puede iniciar
+un lavado por error. Hoy no existe un flujo de "cancelar lavado" real:
+- El endpoint de reembolso existente (`orderApi.washOrderApplyRefund`) es un
+  **reembolso de plata con aprobación** (estados en revisión → aprobado /
+  rechazado). Para un lavado pagado con pack el `finalPrice` es $0, así que
+  "reembolsar plata" no significa nada — hay que reintegrar el **lavado** al
+  pack.
+- No hay endpoint para **re-acreditar** el `remainWashCount` de la Tarjeta VIP
+  (el `vipCardId` solo se *consume* al crear la orden, no hay reversa).
+- No hay comando para **cancelar/detener la máquina** desde el frontend (solo
+  el backend habla con el IoT).
+
+**Regla de negocio (definida con el cliente):** la cancelación con reintegro
+solo aplica **si el ciclo de lavado todavía no arrancó**. Una vez que la
+máquina empezó a lavar, no se puede deshacer (no se puede "des-lavar").
+
+**Acción solicitada:** exponer un endpoint de cancelación de orden de lavado
+(ej. `POST /user/wash/cancelOrder/{orderId}`) que, gateado por `washStatus`
+(o una ventana de tiempo desde la apertura de la máquina):
+1. Si el ciclo no arrancó: cancelar la orden, **mandar stop/cierre al IoT** y
+   **reintegrar** — si se pagó con pack, sumar +1 a `remainWashCount` de la
+   tarjeta usada; si se pagó con saldo/online, disparar el reembolso de plata.
+2. Devolver claramente si la cancelación fue posible o si el lavado ya arrancó
+   (para que el frontend muestre el mensaje correcto).
+3. Idealmente, que `isShowRefundBtn` (o un flag nuevo `isCancelable`) refleje
+   con precisión cuándo la cancelación está permitida.
+
+**Nota de frontend (pendiente, depende de lo anterior):** el botón "Solicitar
+reembolso" en `src/pages/order/detail.vue` está mal cableado a `onClickService`
+(intenta abrir el marcador telefónico `tel:` en vez de disparar un reembolso).
+Se corregirá cuando el backend defina el flujo de cancelación/reembolso real.
+
+### 2.13 ¿A qué URL exacta devuelve Mercado Pago después de pagar?
+**Prioridad:** ALTA (el cliente pierde la sesión al volver de pagar).
+**Endpoint involucrado:** el que crea la preferencia de MP —
+`vipCardApi.newVipCardOrder`, `washApi.mercadoPagoPay`, `topUpApi.newOrder`.
+
+**Contexto:** ver la entrada del 2026-07-27 arriba. Al volver de Mercado Pago
+el usuario aparecía deslogueado. El frontend ya no lo patea a `/login` (la
+pantalla de resultado pasó a ser pública), así que **ahora al menos ve si el
+pago salió** — pero si vuelve sin token, igual tiene que loguearse de nuevo.
+
+**Dato clave:** la `back_url` la arma **el backend** al crear la preferencia.
+El `returnUrl` que calcula el frontend en
+[mercado-pago-payment-popup.vue](src/components/payment/mercado-pago-payment-popup.vue)
+es **código muerto**: quedó colgado del formulario de Stripe que está
+comentado, no lo consume nadie. O sea que el frontend no tiene forma de influir
+en adónde vuelve el usuario.
+
+**Tres causas posibles del token perdido** (falta el dato de campo para
+distinguirlas — la URL real de la barra de direcciones en el momento del
+error):
+
+1. La `back_url` apunta a **otro host** que el de la app → otro `localStorage`.
+2. El cliente tiene la **PWA instalada** en el escritorio del iPhone: en iOS
+   ese contenedor de storage está **separado de Safari**, y la vuelta de MP
+   puede abrir en Safari.
+3. Pagó desde un **navegador in-app** (Instagram, Facebook).
+
+**Acción solicitada:**
+1. Confirmar exactamente qué `back_urls` (`success` / `pending` / `failure`) se
+   configuran en la preferencia, y que el host sea **`lavar.speedwash.com.ar`**
+   — el mismo desde el que el usuario inició el pago.
+2. Confirmar que se manda `auto_return` para que la vuelta sea automática.
+3. Que la `back_url` conserve `oid` y `from`: la pantalla de resultado los
+   necesita para saber qué mostrar y adónde llevar después.
+
+### 2.14 ¿La pasarela de SMS rutea a números de Estados Unidos (+1)?
+**Prioridad:** MEDIA (bloquea el alta de clientes con línea extranjera).
+**Endpoints involucrados:** `POST /api/user/sms/regedit`,
+`POST /api/user/sms/resetPwd`.
+
+**Contexto:** el 2026-07-27 llegó el primer cliente con número de EE.UU.
+(`+1 786 …`) y se agregó Estados Unidos al selector de país del frontend (ver
+la entrada de registro arriba). Pero **que el SMS efectivamente llegue depende
+del ruteo de la pasarela del proveedor**, no del frontend.
+
+Hay antecedente: en julio de 2026 la pasarela dejó de entregar a **todos** los
+números argentinos durante días (ver la entrada del 2026-07-06), con
+`{"code":1,"msg":"SMS send fail"}`. Si el ruteo internacional no está
+habilitado, va a pasar lo mismo con los +1 y el cliente no va a poder
+registrarse.
+
+**Acción solicitada:**
+1. Confirmar si la pasarela tiene habilitado el envío a **+1 (EE.UU./Canadá)**.
+2. Si hay allowlist de países, agregar +1 — y avisar qué otros prefijos están
+   habilitados, así el selector del frontend ofrece solo los que funcionan en
+   vez de prometer de más.
 
 ---
 

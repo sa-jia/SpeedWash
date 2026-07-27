@@ -110,7 +110,7 @@
     },
     "register": {
       "title": "Register",
-      "codePlaceholder": "Enter verification code",
+      "codePlaceholder": "Enter the 4-digit code",
       "passwordPlaceholder": "Create a password (min 6 characters)",
       "confirmPasswordPlaceholder": "Confirm password",
       "phoneRequired": "Please enter phone number",
@@ -128,6 +128,7 @@
       "agreementContent": "This is the user agreement content...",
       "agreementConfirm": "I have read and agree",
       "agreementPrefix": "I agree to the",
+      "agreementInline": "By creating your account you accept the",
       "agreementText": "User Agreement",
       "submit": "Register",
       "hasAccount": "Already have an account? ",
@@ -291,6 +292,24 @@
         "scanToWash": "Scan to Wash",
         "navigation": "Navigate",
         "coverImage": "Store Cover Image"
+      },
+      "services": {
+        "selfService": {
+          "name": "Automatic wash",
+          "hours": "24 hours, every day"
+        },
+        "vacuum": {
+          "name": "Vacuum",
+          "badge": "Free",
+          "hours": "Self-service, you do it · 24 hours"
+        },
+        "staffed": {
+          "name": "With staff on site",
+          "hours": "Mon to Fri {weekdays} · Sat {saturday}",
+          "drying": { "name": "Exterior drying", "badge": "Included" },
+          "interior": { "name": "Interior cleaning", "badge": "Charged separately" },
+          "note": "Interior cleaning is not included in the app's packs — ask for the price at the store."
+        }
       },
       "status": {
         "0": "Closed",
@@ -688,7 +707,8 @@
         "uruguay": "Uruguay",
         "chile": "Chile",
         "brasil": "Brazil",
-        "paraguay": "Paraguay"
+        "paraguay": "Paraguay",
+        "estadosUnidos": "United States"
       }
     },
     "shopListItem": {

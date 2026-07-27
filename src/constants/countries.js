@@ -1,5 +1,6 @@
 // Catálogo de países soportados para el campo de teléfono.
-// Limitado a Argentina + países limítrofes (UY, CL, BR, PY).
+// Argentina + países limítrofes (UY, CL, BR, PY) + Estados Unidos
+// (turistas / argentinos con línea de allá — cayó el primero en 2026-07-27).
 // Cada país define:
 //   - code: prefijo internacional sin el +
 //   - iso: código ISO de 2 letras (texto, sin emoji — combina con la UI tech)
@@ -54,6 +55,17 @@ export const COUNTRIES = [
     maxLength: 9,
     // Móviles 9 dígitos (9 + 8 dígitos).
     pattern: /^9\d{8}$|^\d{9}$/,
+  },
+  {
+    code: "1",
+    iso: "US",
+    i18nKey: "estadosUnidos",
+    minLength: 10,
+    maxLength: 10,
+    // NANP: 3 de área + 3 de central + 4 de abonado. Ni el área ni la central
+    // pueden empezar con 0 o 1 — así rebota el error típico de tipear el "1"
+    // del código de país adentro del número (1786302478 en vez de 7863024788).
+    pattern: /^[2-9]\d{2}[2-9]\d{6}$/,
   },
 ];
 

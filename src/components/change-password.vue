@@ -119,7 +119,7 @@ defineExpose({
       </van-steps>
     </div>
 
-    <van-cell-group inset>
+    <van-cell-group inset class="form-wells">
       <van-form ref="formRef" @submit="onSubmit">
         <!-- ─────── PASO 1: verificar teléfono ─────── -->
         <div v-show="active === 0" class="verify-step">

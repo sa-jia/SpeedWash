@@ -112,7 +112,7 @@
     },
     "register": {
       "title": "Crear cuenta",
-      "codePlaceholder": "Ingresá el código",
+      "codePlaceholder": "Ingresá el código de 4 dígitos",
       "passwordPlaceholder": "Creá una contraseña (mínimo 6 caracteres)",
       "confirmPasswordPlaceholder": "Confirmá tu contraseña",
       "phoneRequired": "Ingresá tu número de teléfono",
@@ -130,6 +130,7 @@
       "agreementContent": "Contenido de los términos y condiciones...",
       "agreementConfirm": "Leí y acepto los términos",
       "agreementPrefix": "Acepto los",
+      "agreementInline": "Al crear tu cuenta aceptás los",
       "agreementText": "Términos y condiciones",
       "submit": "Crear cuenta",
       "hasAccount": "¿Ya tenés cuenta? ",
@@ -293,6 +294,24 @@
         "scanToWash": "Escaneá para lavar",
         "navigation": "Cómo llegar",
         "coverImage": "Imagen de la sucursal"
+      },
+      "services": {
+        "selfService": {
+          "name": "Lavado automático",
+          "hours": "Las 24 horas, todos los días"
+        },
+        "vacuum": {
+          "name": "Aspirado",
+          "badge": "Gratis",
+          "hours": "Self-service, lo hacés vos · Las 24 horas"
+        },
+        "staffed": {
+          "name": "Con personal en el local",
+          "hours": "Lun a Vie {weekdays} · Sáb {saturday}",
+          "drying": { "name": "Secado exterior", "badge": "Incluido" },
+          "interior": { "name": "Limpieza interior", "badge": "Se abona aparte" },
+          "note": "La limpieza interior no entra en los packs de la app — consultá el precio en la sucursal."
+        }
       },
       "status": {
         "0": "Cerrado",
@@ -722,7 +741,8 @@
         "uruguay": "Uruguay",
         "chile": "Chile",
         "brasil": "Brasil",
-        "paraguay": "Paraguay"
+        "paraguay": "Paraguay",
+        "estadosUnidos": "Estados Unidos"
       }
     },
     "shopListItem": {

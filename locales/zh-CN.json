@@ -107,7 +107,7 @@
     },
     "register": {
       "title": "注册",
-      "codePlaceholder": "请输入验证码",
+      "codePlaceholder": "请输入 4 位验证码",
       "passwordPlaceholder": "请设置6-20位登录密码",
       "confirmPasswordPlaceholder": "请再次输入登录密码",
       "phoneRequired": "请输入手机号",
@@ -125,6 +125,7 @@
       "agreementContent": "这里是用户服务协议内容...",
       "agreementConfirm": "我已阅读并同意",
       "agreementPrefix": "勾选同意",
+      "agreementInline": "创建账户即表示您同意",
       "agreementText": "《用户服务协议》",
       "submit": "立即注册",
       "hasAccount": "已有账户，",
@@ -283,6 +284,24 @@
         "scanToWash": "扫码洗车",
         "navigation": "导航",
         "coverImage": "店铺封面图"
+      },
+      "services": {
+        "selfService": {
+          "name": "自助洗车",
+          "hours": "24 小时全天开放"
+        },
+        "vacuum": {
+          "name": "吸尘",
+          "badge": "免费",
+          "hours": "自助使用 · 24 小时全天开放"
+        },
+        "staffed": {
+          "name": "店内工作人员服务",
+          "hours": "周一至周五 {weekdays} · 周六 {saturday}",
+          "drying": { "name": "车身擦干", "badge": "已包含" },
+          "interior": { "name": "内饰清洁", "badge": "单独收费" },
+          "note": "内饰清洁不包含在 App 套餐内，价格请到店咨询。"
+        }
       },
       "status": {
         "0": "未营业",
@@ -669,6 +688,14 @@
       "areaCode": {
         "argentina": "阿根廷",
         "china": "中国"
+      },
+      "country": {
+        "argentina": "阿根廷",
+        "uruguay": "乌拉圭",
+        "chile": "智利",
+        "brasil": "巴西",
+        "paraguay": "巴拉圭",
+        "estadosUnidos": "美国"
       }
     },
     "shopListItem": {

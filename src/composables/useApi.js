@@ -32,7 +32,7 @@ const fetchAPI = createFetch({
           // (p.ej. el widget opcional "Mi pack" de la home) NO debe patearlo a
           // login. En páginas protegidas sí redirigimos (sesión expirada real).
           // La lista espeja isVisiblePages de src/modules/router.js.
-          const publicPages = ["Home", "Scan", "Map", "Login", "Register", "Invite", "ForgotPassword"];
+          const publicPages = ["Home", "Scan", "Map", "Login", "Register", "Invite", "ForgotPassword", "PaymentResult"];
           if (!publicPages.includes(router.currentRoute.value?.name)) {
             router.replace("/login");
           }

@@ -79,7 +79,7 @@ const guestLogin = () => {
 
     <van-form @submit="onSubmit" ref="formRef">
       <!-- 表单区域 -->
-      <van-cell-group inset>
+      <van-cell-group inset class="form-wells">
         <!-- 手机号输入框 -->
         <phone-number-field v-model="formData.phone" name="phone" :rules="phoneRules" v-model:area-code="areaCode" />
 

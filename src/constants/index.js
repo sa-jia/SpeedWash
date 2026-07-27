@@ -3,7 +3,10 @@
 // "Próximamente" (en vez del verde "Abierto") y la home muestra un aviso para
 // que la gente que ya compró packs no caiga a lavar antes de tiempo.
 // Poner en false el día que abramos.
-export const PRE_LAUNCH = true;
+// 2026-07-27: apagado — el badge vuelve a reflejar el estado real del backend
+// y el aviso de la home desaparece. Se deja el flag (y sus textos en los tres
+// idiomas) por si hace falta para una sucursal nueva.
+export const PRE_LAUNCH = false;
 
 export const TIMEOUT = {
   API: 10000, // 10秒

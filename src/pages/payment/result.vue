@@ -27,7 +27,11 @@ const SHOW_MACHINE_FAILURE_DELAY = 2000; // 2秒后显示
 const REDIRECT_DELAY = 5000; // 5秒后跳转
 
 const action = computed(() => {
-  if (isGuest.value) {
+  // Sin cuenta real (invitado, o vuelta de Mercado Pago sin sesión) todos los
+  // destinos posibles —/order/:id, /vouchers, /wallet— son rutas protegidas:
+  // mandarlo ahí lo rebota a /login y termina en la misma pantalla confusa que
+  // veníamos de arreglar. Lo dejamos en la home, que sí puede ver.
+  if (isGuest.value || !isRegistered.value) {
     return {
       path: "/",
       title: t("routes.payment.result.actions.backHome"),

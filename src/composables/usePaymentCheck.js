@@ -18,8 +18,17 @@ export function usePaymentCheck() {
   );
   /**
    * 是否使用检查, 洗车订单使用检查
+   *
+   * Requiere token: `payResultCheck` es un endpoint autenticado. Al volver de
+   * Mercado Pago puede no haber sesión (ver por qué en la nota de
+   * "PaymentResult" en src/modules/router.js). Sin token el polling devolvería
+   * 999 en loop y la pantalla se quedaría colgada en el spinner. Cuando no se
+   * puede chequear, mostramos el estado que informa MP en los query params —
+   * imperfecto para el lavado (no dice si la máquina arrancó), pero es una
+   * respuesta en vez de una pantalla trabada.
    */
-  const useCheck = unref(isWashOrder);
+  const hasSession = !!useUserStore().getToken();
+  const useCheck = unref(isWashOrder) && hasSession;
   /**
    * 是否成功
    * 洗车订单依赖于支付结果和洗车机状态, 其他订单依赖于 route.query.status === PAYMENT_STATUS.SUCCESS

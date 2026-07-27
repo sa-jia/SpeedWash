@@ -82,6 +82,7 @@ const onInput = (value) => {
 
 <template>
   <van-field
+    class="field-well phone-field"
     :model-value="model"
     @update:model-value="onInput"
     type="tel"
@@ -94,18 +95,25 @@ const onInput = (value) => {
     :name="name"
   >
     <template #label>
-      <van-space
-        class="text-primary cursor-pointer"
-        align="center"
-        :size="2"
+      <!-- Chip de país: se pinta como botón (tinte celeste + borde) para que
+           se distinga del pozo neutro del input que tiene al lado. Antes los
+           dos compartían el fondo de la tarjeta y no se entendía cuál tocar
+           para escribir y cuál para cambiar el país. -->
+      <span
+        class="country-chip"
+        :class="{ 'country-chip--static': readonly }"
+        role="button"
+        :tabindex="readonly ? -1 : 0"
         @click="onAreaCodeClick"
+        @keydown.enter.prevent="onAreaCodeClick"
+        @keydown.space.prevent="onAreaCodeClick"
       >
-        <span class="font-display text-22 font-bold tracking-wide">
+        <span class="font-display country-chip__iso">
           {{ currentCountry.iso }}
         </span>
-        <van-icon name="arrow-down" v-if="!readonly" />
-        <span> +{{ areaCode }} </span>
-      </van-space>
+        <span class="country-chip__code">+{{ areaCode }}</span>
+        <van-icon name="arrow-down" v-if="!readonly" class="country-chip__caret" />
+      </span>
     </template>
   </van-field>
 
@@ -137,6 +145,65 @@ const onInput = (value) => {
 <style scoped>
 :deep(.van-field__label) {
   width: auto;
+  margin-right: 10px;
+}
+
+/* Chip y pozo arrancan a la misma altura. Top-aligned y no centrado: si
+   aparece el mensaje de error el bloque de la derecha crece hacia abajo, y
+   con `center` el chip quedaría flotando a mitad de camino. */
+.phone-field :deep(.van-cell__value) {
+  min-width: 0;
+}
+
+.country-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 10px;
+  border-radius: 10px;
+  background: rgba(var(--primary-color-rgb), 0.1);
+  border: 1px solid rgba(var(--primary-color-rgb), 0.3);
+  color: var(--primary-color);
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.country-chip:hover,
+.country-chip:focus-visible {
+  background: rgba(var(--primary-color-rgb), 0.18);
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.country-chip:active {
+  background: rgba(var(--primary-color-rgb), 0.26);
+}
+
+/* En modo readonly (ej. cambiar contraseña, donde el número ya está fijo)
+   el chip no se toca: gris y sin cursor de botón. */
+.country-chip--static {
+  background: transparent;
+  border-color: transparent;
+  color: var(--text-secondary);
+  cursor: default;
+}
+
+.country-chip__iso {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.country-chip__code {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.country-chip__caret {
+  font-size: 11px;
+  opacity: 0.8;
 }
 
 /* Hint discreto bajo el input, alineado con el padding del van-field. */
