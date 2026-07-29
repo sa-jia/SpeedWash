@@ -648,6 +648,8 @@
       "validation": {
         "phoneRequired": "Please enter phone number",
         "phoneFormat": "Invalid phone number format",
+      "phoneDigits": "Enter all {count} digits of your number",
+      "phoneDigitsRange": "The number has between {min} and {max} digits",
         "codeRequired": "Please enter verification code",
         "passwordRequired": "Please enter password",
         "passwordLength": "Password must be 6-20 characters",

@@ -1,3 +1,5 @@
+import { getCountryByCode } from "@/constants/countries";
+
 // 登录/注册/忘记密码/重置密码
 export function useAuth(getVerifyCodeApi) {
   const { t } = useI18n();
@@ -49,11 +51,36 @@ export function useAuth(getVerifyCodeApi) {
       required: true,
       message: t("routes.auth.validation.phoneRequired"),
     },
-    // 验证手机号格式 - 支持国际号码
-    // {
-    //   pattern: /^[1-9]\d{1,14}$/,
-    //   message: t("routes.auth.validation.phoneFormat"),
-    // },
+    // Cantidad de dígitos según el país elegido.
+    //
+    // Sin esta regla, un número incompleto se mandaba igual al backend y este
+    // respondía "Este número no está registrado. ¿Querés crear una cuenta?".
+    // El mensaje MIENTE: el número probablemente sí está registrado, solo le
+    // falta un dígito — y si el cliente le cree, se crea una cuenta duplicada.
+    // Validamos acá para que ni siquiera salga el request y el usuario lea qué
+    // le falta, en el campo que corresponde.
+    //
+    // Se valida con el regex del país (ver src/constants/countries.js) y no con
+    // un largo fijo: AR son 10 dígitos, UY 8-9, US 10 con reglas NANP.
+    {
+      validator: (val) => {
+        const digits = String(val || "").replace(/\D/g, "");
+        // Vacío lo cubre la regla `required` de arriba; no duplicamos el error.
+        if (!digits) return true;
+
+        const country = getCountryByCode(areaCode.value);
+        if (country.pattern.test(digits)) return true;
+
+        return country.minLength === country.maxLength
+          ? t("routes.auth.validation.phoneDigits", {
+              count: country.maxLength,
+            })
+          : t("routes.auth.validation.phoneDigitsRange", {
+              min: country.minLength,
+              max: country.maxLength,
+            });
+      },
+    },
   ];
   // 验证验证码
   const verifyCodeRules = [

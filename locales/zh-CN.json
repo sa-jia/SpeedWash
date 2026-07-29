@@ -635,6 +635,8 @@
       "validation": {
         "phoneRequired": "请输入手机号",
         "phoneFormat": "手机号格式不正确",
+      "phoneDigits": "请输入完整的 {count} 位号码",
+      "phoneDigitsRange": "号码为 {min} 至 {max} 位",
         "codeRequired": "请输入验证码",
         "passwordRequired": "请输入密码",
         "passwordLength": "密码长度需在6-20位之间",

@@ -682,6 +682,8 @@
       "validation": {
         "phoneRequired": "Ingresá tu número de teléfono",
         "phoneFormat": "Formato de teléfono no válido",
+      "phoneDigits": "Completá los {count} dígitos de tu número",
+      "phoneDigitsRange": "El número tiene entre {min} y {max} dígitos",
         "codeRequired": "Ingresá el código de verificación",
         "passwordRequired": "Ingresá tu contraseña",
         "passwordLength": "La contraseña debe tener entre 6 y 20 caracteres",
