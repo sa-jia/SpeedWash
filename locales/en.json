@@ -846,6 +846,7 @@
   "payment": {
     "result": {
       "success": "Payment Successful",
+      "processing": "Processing your payment…",
       "failure": "Payment Failed",
       "timeout": "Payment Timeout",
       "cancelled": "Payment Cancelled"

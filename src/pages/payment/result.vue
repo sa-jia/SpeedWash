@@ -10,6 +10,7 @@ const { oid, from } = route.query;
 // TODO: 待优化, 可使用 PAYMENT_STATUS 代替
 const {
   isWashOrder,
+  isRechecking,
   orderNo,
   success,
   paymentSuccess,
@@ -80,19 +81,27 @@ const handleBackHome = () => {
 };
 // 组件卸载时清理定时器
 
+let countdownStarted = false;
+
 watch(
-  status,
-  (newVal) => {
-    // Solo las órdenes de lavado hacen polling que luego actualizará el estado;
-    // para el resto (VIP/recarga) un estado no-final ya es definitivo y debe
-    // disparar la cuenta regresiva/redirección, si no la pantalla queda colgada.
+  [status, isRechecking],
+  ([newVal, rechecking]) => {
+    // El lavado hace su propio polling; VIP/recarga que volvieron en estado
+    // intermedio hacen re-chequeo de acreditación (ver usePaymentCheck). En
+    // ambos casos esperamos a que el estado sea definitivo antes de arrancar la
+    // cuenta regresiva, para no redirigir sobre un "Procesando…" que todavía
+    // puede resolverse a éxito.
     if (
       (newVal === PAYMENT_STATUS.PROCESSING ||
         newVal === PAYMENT_STATUS.PENDING) &&
-      isWashOrder.value
+      (isWashOrder.value || rechecking)
     ) {
       return;
     }
+
+    // La cuenta regresiva arranca una sola vez.
+    if (countdownStarted) return;
+    countdownStarted = true;
 
     if (
       isWashOrder.value &&

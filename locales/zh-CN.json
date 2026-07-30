@@ -820,6 +820,7 @@
   "payment": {
     "result": {
       "success": "支付成功",
+      "processing": "正在处理支付…",
       "failure": "支付失败",
       "timeout": "支付超时",
       "cancelled": "支付取消"
